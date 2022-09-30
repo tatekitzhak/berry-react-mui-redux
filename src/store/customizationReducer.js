@@ -14,6 +14,7 @@ export const initialState = {
 // ==============================|| CUSTOMIZATION REDUCER ||============================== //
 
 const customizationReducer = (state = initialState, action) => {
+    console.log("action:",action)
     let id;
     switch (action.type) {
         case actionTypes.MENU_OPEN:
