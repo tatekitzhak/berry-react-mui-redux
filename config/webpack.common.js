@@ -1,7 +1,8 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
+var webpack = require('webpack');
+var path = require('path');
 
 const paths = require('./paths')
 
@@ -20,7 +21,9 @@ module.exports = {
   plugins: [
     // Removes/cleans build folders and unused assets when rebuilding
     new CleanWebpackPlugin(),
-
+    new webpack.ProvidePlugin({
+      'React': 'react',
+    }),
     // Copies files from target to destination folder
     new CopyWebpackPlugin({
       patterns: [
