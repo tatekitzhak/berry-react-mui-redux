@@ -3,6 +3,8 @@ https://www.positronx.io/react-redux-save-data-in-local-storage-with-persist-tut
 
 https://github.com/SinghDigamber/react-redux-shopping-cart
 
+https://blog.knoldus.com/create-a-react-app-without-create-react-app/amp/
+
 
 /*
 
