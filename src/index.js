@@ -1,16 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 
-import App from '@/App';
+// third party
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-// Test import of an asset
-import webpackLogo from '@/images/webpack-logo.svg';
+// project imports
+import App from 'App';
+import { store } from 'store';
 
-// Import of styles
+// Import of styles + assets
 import '@/styles/index.scss';
+import '@/assets/scss/style.scss';
+import config from './config';
 
-// Tests
+// ==============================|| REACT DOM RENDER  ||============================== //
 
-// --- Render on the DOM ---
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+const container = document.getElementById('root');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(
+    <Provider store={store}>
+        <BrowserRouter basename={config.basename}>
+            <App />
+        </BrowserRouter>
+    </Provider>
+);
