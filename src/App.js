@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 
-import { ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
 
 // routing
-import Routes from 'routes';
+import ThemeRoutes from 'routes/index';
 
 // defaultTheme
 import themes from 'themes';
@@ -16,13 +16,15 @@ import NavigationScroll from 'layout/NavigationScroll';
 
 const App = () => {
     const customization = useSelector((state) => state.customization);
-
+    
+    const theme = createTheme(customization);
+    console.log('App:',theme)
     return (
         <StyledEngineProvider injectFirst>
-            <ThemeProvider theme={themes(customization)}>
+            <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <NavigationScroll>
-                    <Routes />
+                    <ThemeRoutes />
                 </NavigationScroll>
             </ThemeProvider>
         </StyledEngineProvider>

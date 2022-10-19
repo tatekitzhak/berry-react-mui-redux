@@ -21,6 +21,7 @@ import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDown
 
 const PopularCard = ({ isLoading }) => {
     const theme = useTheme();
+    console.log('PopularCard:',theme)
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -146,8 +147,8 @@ const PopularCard = ({ isLoading }) => {
                                                                 width: 16,
                                                                 height: 16,
                                                                 borderRadius: '5px',
-                                                                backgroundColor: theme.palette.orange.light,
-                                                                color: theme.palette.orange.dark,
+                                                                backgroundColor: theme.palette.primary.light,
+                                                                color: theme.palette.primary.dark,
                                                                 marginLeft: 1.875
                                                             }}
                                                         >
@@ -159,7 +160,7 @@ const PopularCard = ({ isLoading }) => {
                                         </Grid>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant="subtitle2" sx={{ color: theme.palette.orange.dark }}>
+                                        <Typography variant="subtitle2" sx={{ color: theme.palette.primary.dark }}>
                                             10% loss
                                         </Typography>
                                     </Grid>
@@ -228,8 +229,8 @@ const PopularCard = ({ isLoading }) => {
                                                                 width: 16,
                                                                 height: 16,
                                                                 borderRadius: '5px',
-                                                                backgroundColor: theme.palette.orange.light,
-                                                                color: theme.palette.orange.dark,
+                                                                backgroundColor: theme.palette.primary.light,
+                                                                color: theme.palette.primary.dark,
                                                                 ml: 2
                                                             }}
                                                         >
@@ -241,7 +242,7 @@ const PopularCard = ({ isLoading }) => {
                                         </Grid>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant="subtitle2" sx={{ color: theme.palette.orange.dark }}>
+                                        <Typography variant="subtitle2" sx={{ color: theme.palette.primary.dark }}>
                                             10% loss
                                         </Typography>
                                     </Grid>
@@ -269,8 +270,8 @@ const PopularCard = ({ isLoading }) => {
                                                                 width: 16,
                                                                 height: 16,
                                                                 borderRadius: '5px',
-                                                                backgroundColor: theme.palette.orange.light,
-                                                                color: theme.palette.orange.dark,
+                                                                backgroundColor: theme.palette.primary.light,
+                                                                color: theme.palette.primary.dark,
                                                                 ml: 2
                                                             }}
                                                         >
@@ -282,7 +283,7 @@ const PopularCard = ({ isLoading }) => {
                                         </Grid>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant="subtitle2" sx={{ color: theme.palette.orange.dark }}>
+                                        <Typography variant="subtitle2" sx={{ color: theme.palette.primary.dark }}>
                                             10% loss
                                         </Typography>
                                     </Grid>

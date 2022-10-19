@@ -12,8 +12,8 @@ const icons = {
 // ==============================|| UTILITIES MENU ITEMS ||============================== //
 
 const utilities = {
-    id: 'utilities',
-    title: 'Utilities',
+    id: 'topics',
+    title: 'Topics',
     type: 'group',
     children: [
         {
@@ -22,7 +22,7 @@ const utilities = {
             type: 'item',
             url: '/utils/util-typography',
             icon: icons.IconTypography,
-            breadcrumbs: false
+            breadcrumbs: true
         },
         {
             id: 'util-color',
@@ -30,7 +30,7 @@ const utilities = {
             type: 'item',
             url: '/utils/util-color',
             icon: icons.IconPalette,
-            breadcrumbs: false
+            breadcrumbs: true
         },
         {
             id: 'util-shadow',
@@ -38,27 +38,55 @@ const utilities = {
             type: 'item',
             url: '/utils/util-shadow',
             icon: icons.IconShadow,
-            breadcrumbs: false
+            breadcrumbs: true
         },
         {
-            id: 'icons',
-            title: 'Icons',
+            id: 'icons-1',
+            title: 'Icons-1',
             type: 'collapse',
             icon: icons.IconWindmill,
+            url: '/icons-1',
             children: [
                 {
                     id: 'tabler-icons',
                     title: 'Tabler Icons',
                     type: 'item',
+                    icon: icons.IconWindmill,
                     url: '/icons/tabler-icons',
-                    breadcrumbs: false
+                    breadcrumbs: true
                 },
                 {
                     id: 'material-icons',
                     title: 'Material Icons',
                     type: 'item',
+                    icon: icons.IconWindmill,
                     url: '/icons/material-icons',
-                    breadcrumbs: false
+                    breadcrumbs: true
+                }
+            ]
+        },
+        {
+            id: 'icons-2',
+            title: 'Icons-2',
+            type: 'collapse',
+            icon: icons.IconWindmill,
+            url: '/icons-2',
+            children: [
+                {
+                    id: 'tabler-icons',
+                    title: 'Tabler Icons',
+                    type: 'item',
+                    icon: icons.IconWindmill,
+                    url: '/icons/tabler-icons',
+                    breadcrumbs: true
+                },
+                {
+                    id: 'material-icons',
+                    title: 'Material Icons',
+                    type: 'item',
+                    icon: icons.IconWindmill,
+                    url: '/icons/material-icons',
+                    breadcrumbs: true
                 }
             ]
         }

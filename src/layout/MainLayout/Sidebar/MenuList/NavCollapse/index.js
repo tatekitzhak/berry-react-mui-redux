@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -16,6 +17,7 @@ import { IconChevronDown, IconChevronUp } from '@tabler/icons';
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
 const NavCollapse = ({ menu, level }) => {
+    let navigate = useNavigate();
     const theme = useTheme();
     const customization = useSelector((state) => state.customization);
 
@@ -25,6 +27,7 @@ const NavCollapse = ({ menu, level }) => {
     const handleClick = () => {
         setOpen(!open);
         setSelected(!selected ? menu.id : null);
+        navigate('/sample-page');
     };
 
     // menu collapse & item

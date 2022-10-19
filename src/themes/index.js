@@ -15,19 +15,19 @@ import themeTypography from './typography';
 
 export const theme = (customization) => {
     const color = colors;
-    console.log('colors:',colors)
+    console.log('colors:', colors);
     const themeOption = {
         colors: color,
-        heading: '#212121',
-        paper: '#ffffff',
-        backgroundDefault: '#ffffff',
-        background: '#e3f2fd',
-        darkTextPrimary: '#616161',
-        darkTextSecondary: '#9e9e9e',
-        textDark: '#212121',
-        menuSelected: '#5e35b1',
-        menuSelectedBack: '#ede7f6',
-        divider: '#eeeeee',
+        heading: color.grey900,
+        paper: color.paper,
+        backgroundDefault: color.paper,
+        background: color.primaryLight,
+        darkTextPrimary: color.grey700,
+        darkTextSecondary: color.grey500,
+        textDark: color.grey900,
+        menuSelected: color.secondaryDark,
+        menuSelectedBack: color.secondaryLight,
+        divider: color.grey200,
         customization
     };
 

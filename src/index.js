@@ -8,8 +8,7 @@ import { Provider } from 'react-redux';
 import App from 'App';
 import { store } from 'store';
 
-// Import of styles + assets
-import '@/styles/index.scss';
+// style + assets
 import '@/assets/scss/style.scss';
 import config from './config';
 

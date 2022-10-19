@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 
 // material-ui
 import { styled, useTheme } from '@mui/material/styles';
-import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material';
+import { Paper, Typography, Container, AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material';
 
 // project imports
 import Breadcrumbs from 'ui-component/extended/Breadcrumbs';
@@ -17,6 +17,38 @@ import { SET_MENU } from 'store/actions';
 
 // assets
 import { IconChevronRight } from '@tabler/icons';
+
+function Footer(params) {
+    return (
+        /*  https://bit.cloud/eden/buy-a-goldfish/blocks/footer
+         <Layout>
+             <Footer logo="Goldfish inc.">
+                 <Footer.Column title="Features" items={["Hearing", "Vision"]} />
+                 <Footer.Column title="Resources" items={["Compare", "Blog"]} />
+                 <Footer.Column title="Social" items={["LinkedIn", "Instagram"]} />
+                 <Footer.Column title="Company" items={["About Us", "Careers"]} />
+             </Footer>
+         </Layout> */
+        <Paper sx={{ marginTop: 'calc(10%+60px)', bottom: 0 }} component="footer" square variant="outlined">
+            <Container maxWidth="lg">
+                <Box sx={{ flexGrow: 1, justifyContent: 'center', display: 'flex', my: 1 }}>
+                    <h1>Footer</h1>
+                </Box>
+                <Box sx={{ flexGrow: 1, justifyContent: 'center', display: 'flex', my: 2 }}>
+                    <Typography variant="caption" color="initial">
+                        Copyright ©2022. [] Limited
+                    </Typography>
+                </Box>
+                <Box sx={{ flexGrow: 1, justifyContent: 'center', display: 'flex', my: 1 }}>
+                    <h1>Footer</h1>
+                </Box>
+                <Box sx={{ flexGrow: 1, justifyContent: 'center', display: 'flex', my: 2 }}>
+                    <h1>Footer</h1>
+                </Box>
+            </Container>
+        </Paper>
+    );
+}
 
 // styles
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
@@ -107,6 +139,7 @@ const MainLayout = () => {
                 {/* breadcrumb */}
                 <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
                 <Outlet />
+                <Footer />
             </Main>
             <Customization />
         </Box>

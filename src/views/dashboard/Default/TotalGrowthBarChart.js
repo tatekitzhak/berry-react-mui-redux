@@ -36,13 +36,14 @@ const status = [
 // ==============================|| DASHBOARD DEFAULT - TOTAL GROWTH BAR CHART ||============================== //
 
 const TotalGrowthBarChart = ({ isLoading }) => {
+    console.log('TotalGrowthBarChart:',useTheme())
     const [value, setValue] = useState('today');
     const theme = useTheme();
     const customization = useSelector((state) => state.customization);
 
     const { navType } = customization;
     const { primary } = theme.palette.text;
-    const darkLight = theme.palette.dark.light;
+    const darkLight = theme.palette.primary.light;
     const grey200 = theme.palette.grey[200];
     const grey500 = theme.palette.grey[500];
 

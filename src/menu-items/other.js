@@ -16,7 +16,7 @@ const other = {
             type: 'item',
             url: '/sample-page',
             icon: icons.IconBrandChrome,
-            breadcrumbs: false
+            breadcrumbs: true
         },
         {
             id: 'documentation',
