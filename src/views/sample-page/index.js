@@ -1,8 +1,9 @@
 // material-ui
-import { Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
+import EarningCard from '@/views/dashboard/Default/EarningCard';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
@@ -14,6 +15,11 @@ const SamplePage = () => (
             reprehended in voltage veil esse colum doolie eu fujian bulla parian. Exceptive sin ocean cuspidate non president, sunk in culpa
             qui officiate descent molls anim id est labours.
         </Typography>
+        <Grid container>
+            <Grid item xs={3}>
+                <EarningCard></EarningCard>
+            </Grid>
+        </Grid>
     </MainCard>
 );
 

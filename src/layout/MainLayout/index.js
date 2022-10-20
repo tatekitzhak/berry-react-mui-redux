@@ -104,6 +104,9 @@ const MainLayout = () => {
 
             {/* main content */}
             <Main theme={theme} open={leftDrawerOpened}>
+            <h1>1 -> hello</h1>
+            <h1>2 -> hello</h1>
+            <h1>3 -> hello</h1>
                 {/* breadcrumb */}
                 <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
                 <Outlet />

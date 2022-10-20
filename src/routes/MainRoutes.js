@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 
 // project imports
-import MainLayout from 'layout/MainLayout';
+import MainLayout from '@/layout/MainLayout/index';
 import Loadable from 'ui-component/Loadable';
 
 // dashboard routing

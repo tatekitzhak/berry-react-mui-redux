@@ -15,7 +15,6 @@ import themeTypography from './typography';
 
 export const theme = (customization) => {
     const color = colors;
-    console.log('colors:', colors);
     const themeOption = {
         colors: color,
         heading: color.grey900,

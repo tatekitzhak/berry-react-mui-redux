@@ -159,7 +159,7 @@ const PopularCard = ({ isLoading }) => {
                                         </Grid>
                                     </Grid>
                                     <Grid item>
-                                        <Typography variant="subtitle2" sx={{ color: '#d84315'}}>
+                                        <Typography variant="subtitle2" sx={{ color: '#d84315' }}>
                                             10% loss
                                         </Typography>
                                     </Grid>
