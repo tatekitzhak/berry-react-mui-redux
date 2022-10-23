@@ -14,6 +14,7 @@ import Customization from '../Customization';
 import navigation from 'menu-items';
 import { drawerWidth } from 'store/constant';
 import { SET_MENU } from 'store/actions';
+import { set_menu } from '@/features/customizationCreateSlice';
 
 // assets
 import { IconChevronRight } from '@tabler/icons';
@@ -72,11 +73,14 @@ const MainLayout = () => {
     const leftDrawerOpened = useSelector((state) => state.customization.opened);
     const dispatch = useDispatch();
     const handleLeftDrawerToggle = () => {
-        dispatch({ type: SET_MENU, opened: !leftDrawerOpened });
+        console.log('MainLayout:',leftDrawerOpened)
+        //dispatch({ type: SET_MENU, opened: !leftDrawerOpened });
+        dispatch(set_menu(!leftDrawerOpened ));
     };
 
     useEffect(() => {
-        dispatch({ type: SET_MENU, opened: !matchDownMd });
+        // dispatch({ type: SET_MENU, opened: !matchDownMd });
+        dispatch(set_menu(!matchDownMd ));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [matchDownMd]);
 

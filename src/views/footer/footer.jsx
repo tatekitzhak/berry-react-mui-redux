@@ -23,6 +23,7 @@ function Footer() {
     const count = useSelector((state) => state.counter.value)
     // Handle left drawer
     const leftDrawerOpened = useSelector((state) => state.customization.opened);
+    // console.log('customization:', leftDrawerOpened)
     const dispatch = useDispatch()
     useEffect(() => {
         

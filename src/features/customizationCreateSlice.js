@@ -2,15 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 // project imports
 import config from 'config';
 
-
 export const initialState = {
   isOpen: [], // for active default menu
   fontFamily: config.fontFamily,
   borderRadius: config.borderRadius,
   opened: true
 };
-
-
 
 const customizationSlice = createSlice({
   name: 'authUser',

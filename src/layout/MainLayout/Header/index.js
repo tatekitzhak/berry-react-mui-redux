@@ -17,7 +17,7 @@ import { IconMenu2 } from '@tabler/icons';
 
 const Header = ({ handleLeftDrawerToggle }) => {
     const theme = useTheme();
-
+    console.log('Header:', handleLeftDrawerToggle)
     return (
         <>
             {/* logo & toggler button */}
