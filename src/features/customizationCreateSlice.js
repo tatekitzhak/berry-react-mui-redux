@@ -1,55 +1,45 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 // project imports
 import config from 'config';
 
-// action - state management
-import * as actionTypes from '../store/actions';
 
-import axios from 'axios';
+export const initialState = {
+  isOpen: [], // for active default menu
+  fontFamily: config.fontFamily,
+  borderRadius: config.borderRadius,
+  opened: true
+};
 
-// Authenticate user (you can dispatch this async action from your component)
-export const authUser = createAsyncThunk(
-  "user/authUser",
-  async (authParams, thunkApi) => {
-    const { rejectWithValue } = thunkApi
-    try {
-      const response = await axios.get("https://someapi.com/users/signin", { authParams })
-      return response.data.user
-    } catch (error) {
-      // Use `err.response.data` as `action.payload` for a `rejected` action, by explicitly returning it using the `rejectWithValue()` utility
-      return rejectWithValue(error)
-    }
-  }
-)
 
-const userState = {
-    name: 'authUser',
-    initialState: {
-      authenticated: false,
-      info: null,
-      isLoading: false,
-      error: null
+
+const customizationSlice = createSlice({
+  name: 'authUser',
+  initialState: {
+    isOpen: [], // for active default menu
+    fontFamily: config.fontFamily,
+    borderRadius: config.borderRadius,
+    opened: true
+  },
+  reducers: {
+    menu_open: (state, action) => {
+      console.log('state, action):',state, [action.payload.id])
+      state.isOpen = [action.payload.id]
     },
-    extraReducers: {
-      [authUser.pending]: (state, action) => {
-        state.isLoading = true
-      },
-      [authUser.fulfilled]: (state, action) => {
-        state.isLoading = false
-        state.error = null
-        state.authenticated = true
-        state.info = action.payload
-      },
-      [authUser.rejected]: (state, action) => {
-        state.isLoading = false
-        state.error = action.payload
-      }
+    set_menu: (state, action) => {
+      console.log('state, action):',state, action.payload)
+      state.opened = action.payload
+    },
+    set_font_family(state, action) { 
+      console.log('set_font_family (state, action):',state, action)
+      state.fontFamily = action.payload;
+    },
+    set_border_radius(state, action) { 
+      console.log('set_border_radius (state, action):',state, action)
+      state.borderRadius = action.payload;
     }
-  }
+  },
+})
 
-const userAuthSlice = createSlice(userState)
-  
-  // Exporting data for selectors
-  export const isAuthenticated = (state) => { return state.currentUser.authenticated }
-  
-  export default userAuthSlice.reducer;
+export const { menu_open, set_menu, set_font_family, set_border_radius } = customizationSlice.actions;
+
+export default customizationSlice.reducer;

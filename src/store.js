@@ -1,16 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterSlice from '@/features/counterSlice'
+import counterSlice from '@/features/counterSlice';
+import customizationSlice from '@/features/customizationCreateSlice';
 
-
-
-// export const store = configureStore({
-//   reducer: counterSlice
-// })
 
 const store = configureStore({
     reducer: {
       // Add reducers here
-      counter: counterSlice
+      counter: counterSlice,
+      customization: customizationSlice
     }
   })
   export default store;
