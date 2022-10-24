@@ -1,9 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// project imports
-import config from 'config';
-
-// action - state management
-import * as actionTypes from '../store/actions';
 
 import axios from 'axios';
 

@@ -1,12 +1,11 @@
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import { Provider } from 'react-redux';
-import Footer from '@/views/footer/footer.jsx'
 // project imports
 import App from 'App';
-import store from '@/store';
-import ReduxStoreWrapper from '@/store/index'
+import ReduxStoreWrapper from '@/store';
+import Footer from '@/views/footer/footer.jsx'
+
 
 // style + assets
 import '@/assets/scss/style.scss';
@@ -17,16 +16,11 @@ const container = document.getElementById('root');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(
     <>
-        {/* <ReduxStoreWrapper>
-            
-        </ReduxStoreWrapper> */}
-
-        <Provider store={store}>
-        <BrowserRouter basename={config.basename}>
+        <ReduxStoreWrapper>
+            <BrowserRouter basename={config.basename}>
                 <App />
             </BrowserRouter>
-            <Footer/>
-        </Provider>
+            <Footer />
+        </ReduxStoreWrapper>
     </>
-
 );

@@ -1,7 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { decrement, increment } from '@/features/counterSlice';
 import { set_menu, menu_open, set_font_family, set_border_radius } from '@/features/customizationCreateSlice';
+import { getUsers } from "@/features/usersSlice";
+import { fetchTopics } from "@/features/topics/topicsSlice";
+import { incrementFetch, fetchData } from "@/features/fetchDataSlice";
 // material-ui
 import { Grid, Typography } from '@mui/material';
 
@@ -12,6 +15,15 @@ import EarningCard from '@/views/dashboard/Default/EarningCard';
 // ==============================|| SAMPLE PAGE ||============================== //
 
 function Footer() {
+    const dispatch = useDispatch()
+    const { users } = useSelector((state) => state.users);
+    const count = useSelector((state) => state.counter.value)
+
+    // data fetch
+    const dataFetching = useSelector((state) => state.topicsSlice);
+    // Handle left drawer
+    const leftDrawerOpened = useSelector((state) => state.customization.opened);
+
     const item = {
         "id": "tabler-icons",
         "title": "Tabler Icons",
@@ -19,15 +31,12 @@ function Footer() {
         "url": "/icons/tabler-icons",
         "breadcrumbs": false
     }
+    
     const newFont = `'Inter', sans-serif`;
-    const count = useSelector((state) => state.counter.value)
-    // Handle left drawer
-    const leftDrawerOpened = useSelector((state) => state.customization.opened);
-    // console.log('customization:', leftDrawerOpened)
-    const dispatch = useDispatch()
+    
     useEffect(() => {
-        
-    });
+        dispatch(getUsers(1234));
+      }, [dispatch]);
     return (
         <MainCard title="Sample Card">
             <Typography variant="body2">
@@ -69,8 +78,22 @@ function Footer() {
                             <button onClick={() => dispatch(set_border_radius( 12))}>
                                 dispatch set_font_family
                             </button>
+                           
                         </div>
                         <span>{count}</span>
+                        <h1>Welcome to React Redux Toolkit Crash Course</h1>
+                            {users && users.map((user, i) => <h1 key={i}>{user.name}</h1>)}
+                    </div>
+
+                    <div>
+                       
+                       <button onClick={() => dispatch(fetchTopics(3))}>
+                        Fetch Data
+                        </button>
+                        <br/>
+                        <button onClick={() => dispatch(fetchData())}>
+                        incrementFetch
+                        </button>
                     </div>
                 </Grid>
             </Grid>
