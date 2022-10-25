@@ -9,6 +9,7 @@ import LogoSection from '../LogoSection';
 import SearchSection from './SearchSection';
 import ProfileSection from './ProfileSection';
 import NotificationSection from './NotificationSection';
+import HeaderMenu from '@/layout/MainLayout/Header/HeaderMenuNavigation/Navigation'
 
 // assets
 import { IconMenu2 } from '@tabler/icons';
@@ -53,7 +54,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
                     </Avatar>
                 </ButtonBase>
             </Box>
-
+            <HeaderMenu />
             {/* header search */}
             <SearchSection />
             <Box sx={{ flexGrow: 1 }} />
