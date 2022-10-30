@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 // material-ui
 import { styled, useTheme } from '@mui/material/styles';
 import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material';
+import { Avatar, ButtonBase } from '@mui/material'
 
 // project imports
 import Breadcrumbs from 'ui-component/extended/Breadcrumbs';
@@ -17,7 +18,7 @@ import { SET_MENU } from 'store/actions';
 import { set_menu } from '@/features/customizationCreateSlice';
 
 // assets
-import { IconChevronRight } from '@tabler/icons';
+import { IconChevronRight, IconMenu2 } from '@tabler/icons';
 
 // styles
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
@@ -103,6 +104,32 @@ const MainLayout = () => {
                 <Toolbar>
                     <Header handleLeftDrawerToggle={handleLeftDrawerToggle} />
                 </Toolbar>
+                <Toolbar>
+                    <h2>Topics</h2>
+                        {/* Sidebar Button icon, drawer open/close */}
+                    <div>
+                        <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
+                                <Avatar
+                                    variant="rounded"
+                                    sx={{
+                                        ...theme.typography.commonAvatar,
+                                        ...theme.typography.mediumAvatar,
+                                        transition: 'all .2s ease-in-out',
+                                        background: theme.palette.secondary.light,
+                                        color: theme.palette.secondary.dark,
+                                        '&:hover': {
+                                            background: theme.palette.secondary.dark,
+                                            color: theme.palette.secondary.light
+                                        }
+                                    }}
+                                    onClick={handleLeftDrawerToggle}
+                                    color="inherit"
+                                >
+                                    <IconMenu2 stroke={1.5} size="1.3rem" />
+                                </Avatar>
+                        </ButtonBase>
+                    </div>
+                </Toolbar>
             </AppBar>
 
             {/* drawer */}
@@ -111,7 +138,6 @@ const MainLayout = () => {
             {/* main content */}
             <Main theme={theme} open={leftDrawerOpened}>
             <h1>1 -> hello</h1>
-            <h1>2 -> hello</h1>
             <h1>3 -> hello</h1>
                 {/* breadcrumb */}
                 <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
