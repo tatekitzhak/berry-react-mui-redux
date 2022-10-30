@@ -4,13 +4,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
 
 // routing
-import Routes from 'routes';
+import Routes from '@/routes/index.js';
 
 // defaultTheme
 import themes from 'themes';
 
 // project imports
-import NavigationScroll from 'layout/NavigationScroll';
+import NavigationScroll from '@/layout/NavigationScroll';
 
 // ==============================|| APP ||============================== //
 

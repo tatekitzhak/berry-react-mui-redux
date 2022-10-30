@@ -11,7 +11,7 @@ import Breadcrumbs from 'ui-component/extended/Breadcrumbs';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Customization from '../Customization';
-import navigation from 'menu-items';
+import navigation from '@/menu-items/index.js';
 import { drawerWidth } from 'store/constant';
 import { SET_MENU } from 'store/actions';
 import { set_menu } from '@/features/customizationCreateSlice';
@@ -94,8 +94,11 @@ const MainLayout = () => {
                 elevation={0}
                 sx={{
                     bgcolor: theme.palette.background.default,
-                    transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
+                    transition: leftDrawerOpened ? theme.transitions.create('width') : 'none',
+                    borderBottom: 1,
+                    borderColor: 'grey.500'
                 }}
+                
             >
                 <Toolbar>
                     <Header handleLeftDrawerToggle={handleLeftDrawerToggle} />
@@ -114,6 +117,7 @@ const MainLayout = () => {
                 <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
                 <Outlet />
             </Main>
+            {/* Customization settings */}
             <Customization />
         </Box>
     );

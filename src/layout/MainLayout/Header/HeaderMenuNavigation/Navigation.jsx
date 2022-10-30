@@ -1,99 +1,106 @@
 import * as React from 'react';
-import { Divider, List, Typography, Button, Drawer, useMediaQuery } from '@mui/material';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { IconButton, ListItemText, ListItemIcon, Box, Divider, List, Typography, Button, Drawer, useMediaQuery, ListItem, ListItemButton } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import MenuIcon from '@mui/icons-material/Menu';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 export default function HeaderMenu() {
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
-  const theme = useTheme();
-  const matchesXs = useMediaQuery(theme.breakpoints.down('md'));
-  console.log('matchesXs:',theme)
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
+    const [state, setState] = React.useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+    });
+    const [breakpointsStatus, SetBreakpointsStatus] = React.useState(false);
+    const theme = useTheme();
+    const matchesXs = useMediaQuery(theme.breakpoints.down('md'));
 
-    setState({ ...state, [anchor]: open });
-  };
-
-  const list = (anchor) => (
-    <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
-  return (
-    <div>
-      {!matchesXs ? ['left', 'right', 'top', 'bottom'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button>{anchor}</Button>
-          
-          <Drawer
-            anchor={'top'}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      )) : <>
-      {['left', 'right', 'top', 'bottom'].map((anchor) => (
-            <React.Fragment key={anchor}>
-            
-            <Drawer
-                anchor={'top'}
-                open={state[anchor]}
-                onClose={toggleDrawer(anchor, false)}
-            >
-                {list(anchor)}
-            </Drawer>
-            </React.Fragment>
-        )) }
-      <Button onClick={toggleDrawer('top', true)}>{'top'}</Button>
-      </>
-      
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
         }
-      
-    </div>
-  );
+
+        setState({ ...state, [anchor]: open });
+    };
+    React.useEffect(() => {
+
+        SetBreakpointsStatus(matchesXs)
+    }, [matchesXs]);
+
+    const list = (anchor) => (
+        <Box
+            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+            role="presentation"
+            onClick={toggleDrawer(anchor, false)}
+            onKeyDown={toggleDrawer(anchor, false)}
+        >
+            <List>
+                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                    <ListItem key={text} disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+            <Divider />
+            <List>
+                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                    <ListItem key={text} disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+           
+          <IconButton >
+            {/* {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />} */}
+            <ExpandLessIcon/>
+          </IconButton>
+        </Box>
+    );
+    const drawer = (anchorType) => (
+        <Drawer
+            anchor={anchorType}
+            open={state[anchorType]}
+            onClose={toggleDrawer(anchorType, false)}
+        >
+            {list(anchorType)}
+        </Drawer>
+    )
+    return (
+        <div>
+            {
+                !breakpointsStatus ? ['Home', 'Topics', 'About', 'Contact'].map((anchor) => (
+                    <React.Fragment key={anchor}>
+                        
+                        <NavLink  to={`${anchor.toLowerCase()}`}>
+                            <Button>{anchor}</Button>
+                        </NavLink>
+                        {drawer('top')}
+                    </React.Fragment>
+                )) : <>
+                        {drawer('top')}
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            aria-label="menu"
+                            onClick={toggleDrawer('top', true)}
+                        >
+                            <MenuIcon/>
+                        </IconButton>
+                    </>
+            }
+        </div>
+    );
 }

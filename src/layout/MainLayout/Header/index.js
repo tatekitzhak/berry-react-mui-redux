@@ -1,8 +1,10 @@
+import * as React from 'react';
+
 import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Avatar, Box, ButtonBase } from '@mui/material';
+import { Avatar, Box, ButtonBase, Button } from '@mui/material';
 
 // project imports
 import LogoSection from '../LogoSection';
@@ -17,6 +19,7 @@ import { IconMenu2 } from '@tabler/icons';
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
 const Header = ({ handleLeftDrawerToggle }) => {
+    const [isUser, setIsUser] = React.useState(true);
     const theme = useTheme();
     return (
         <>
@@ -55,14 +58,26 @@ const Header = ({ handleLeftDrawerToggle }) => {
                 </ButtonBase>
             </Box>
             <HeaderMenu />
-            {/* header search */}
-            <SearchSection />
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ flexGrow: 1 }} />
+            
+           { 
+            isUser ? <>
+                    <SearchSection /> {/* header search */}
+                    <Box sx={{ flexGrow: 1 }} />
+                    <Box sx={{ flexGrow: 1 }} />
 
-            {/* notification & profile */}
-            <NotificationSection />
-            <ProfileSection />
+                    {/* notification & profile */}
+                    <NotificationSection />
+                    <ProfileSection />
+                </> : <div>
+                        <Button variant="contained" size="medium">
+                            Login
+                        </Button>
+                        <Button variant="contained" size="medium">
+                            Sign up
+                        </Button>
+                    </div>
+            }
+            
         </>
     );
 };

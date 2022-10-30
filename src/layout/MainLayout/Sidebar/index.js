@@ -9,10 +9,10 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import { BrowserView, MobileView } from 'react-device-detect';
 
 // project imports
-import MenuList from './MenuList';
-import LogoSection from '../LogoSection';
-import MenuCard from './MenuCard';
-import { drawerWidth } from 'store/constant';
+import MenuList from '@/layout/MainLayout/Sidebar/MenuList/index.js';
+import LogoSection from '@/layout/MainLayout/LogoSection/index.js';
+import MenuCard from '@/layout/MainLayout/Sidebar/MenuCard';
+import { drawerWidth } from '@/store/constant.js';
 
 // ==============================|| SIDEBAR DRAWER ||============================== //
 
@@ -27,19 +27,22 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
                     <LogoSection />
                 </Box>
             </Box>
-            <BrowserView>
-                <PerfectScrollbar
-                    component="div"
-                    style={{
-                        height: !matchUpMd ? 'calc(100vh - 56px)' : 'calc(100vh - 88px)',
-                        paddingLeft: '16px',
-                        paddingRight: '16px'
-                    }}
-                >
-                    <MenuList />
-                    <MenuCard />
-                </PerfectScrollbar>
-            </BrowserView>
+            <Box sx={{ borderRight: 1, borderColor: 'grey.500' }}>
+                <BrowserView>
+                    <PerfectScrollbar
+                        component="div"
+                        style={{
+                            height: !matchUpMd ? 'calc(100vh - 56px)' : 'calc(100vh - 88px)',
+                            paddingLeft: '16px',
+                            paddingRight: '16px'
+                        }}
+                    >
+                        <MenuList />
+                        <MenuCard />
+                    </PerfectScrollbar>
+                </BrowserView>
+            </Box>
+
             <MobileView>
                 <Box sx={{ px: 2 }}>
                     <MenuList />
