@@ -84,7 +84,7 @@ export default function HeaderMenu() {
                 !breakpointsStatus ? ['Home', 'Topics', 'About', 'Contact'].map((anchor) => (
                     <React.Fragment key={anchor}>
                         
-                        <NavLink  to={`${anchor.toLowerCase()}`}>
+                        <NavLink  to={`${anchor.toLowerCase()}`} state={`From ${anchor} Page`} >
                             <Button>{anchor}</Button>
                         </NavLink>
                         {drawer('top')}

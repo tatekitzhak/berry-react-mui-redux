@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
+import AddReactionIcon from '@mui/icons-material/AddReaction';
 import {
     Drawer,
     Fab,
@@ -94,7 +95,7 @@ const Customization = () => {
     return (
         <>
             {/* toggle button */}
-            <Tooltip title="Live Customize">
+            <Tooltip title="Leave feedback">
                 <Fab
                     component="div"
                     onClick={handleToggle}
@@ -110,14 +111,13 @@ const Customization = () => {
                         top: '25%',
                         position: 'fixed',
                         right: 10,
-                        zIndex: theme.zIndex.speedDial
+                        zIndex: theme.zIndex.speedDial, 
+                        backgroundColor: '#0081cb'
                     }}
                 >
-                    <AnimateButton type="rotate">
                         <IconButton color="inherit" size="large" disableRipple>
-                            <IconSettings />
+                            <AddReactionIcon />
                         </IconButton>
-                    </AnimateButton>
                 </Fab>
             </Tooltip>
 

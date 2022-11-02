@@ -1,21 +1,30 @@
+import * as React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
 // material-ui
+
+import Grid from '@mui/system/Unstable_Grid';
+
+
 import { styled, useTheme } from '@mui/material/styles';
 import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material';
 import { Avatar, ButtonBase } from '@mui/material'
 
 // project imports
 import Breadcrumbs from 'ui-component/extended/Breadcrumbs';
-import Header from './Header';
+import HeaderLayout from './Header';
 import Sidebar from './Sidebar';
 import Customization from '../Customization';
 import navigation from '@/menu-items/index.js';
 import { drawerWidth } from 'store/constant';
 import { SET_MENU } from 'store/actions';
 import { set_menu } from '@/features/customizationCreateSlice';
+
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
 // assets
 import { IconChevronRight, IconMenu2 } from '@tabler/icons';
@@ -52,6 +61,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
             duration: theme.transitions.duration.enteringScreen
         }),
         marginLeft: 0,
+        marginTop: "85px",
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0,
         width: `calc(100% - ${drawerWidth}px)`,
@@ -64,9 +74,18 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
     })
 }));
 
+const Item = styled('div')(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    border: '1px solid',
+    borderColor: theme.palette.mode === 'dark' ? '#444d58' : '#ced7e0',
+    padding: theme.spacing(1),
+    borderRadius: '4px',
+    textAlign: 'center',
+  }));
+
 // ==============================|| MAIN LAYOUT ||============================== //
 
-const MainLayout = () => {
+const MainLayout = (props) => {
     const theme = useTheme();
     const matchDownMd = useMediaQuery(theme.breakpoints.down('lg'));
 
@@ -88,49 +107,55 @@ const MainLayout = () => {
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             {/* header */}
-            <AppBar
-                enableColorOnDark
+            <Box
                 position="fixed"
-                color="inherit"
+                color="#fff"
                 elevation={0}
                 sx={{
-                    bgcolor: theme.palette.background.default,
+                    bgcolor: '#e0e0e0',
                     transition: leftDrawerOpened ? theme.transitions.create('width') : 'none',
-                    borderBottom: 1,
-                    borderColor: 'grey.500'
+                    borderColor: 'grey.500',
+                    marginTop: "68px",
+                    width: "260px"
                 }}
-                
             >
-                <Toolbar>
-                    <Header handleLeftDrawerToggle={handleLeftDrawerToggle} />
-                </Toolbar>
-                <Toolbar>
-                    <h2>Topics</h2>
+                {/* <HeaderLayout handleLeftDrawerToggle={handleLeftDrawerToggle} /> */}
+                    
                         {/* Sidebar Button icon, drawer open/close */}
-                    <div>
-                        <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
-                                <Avatar
-                                    variant="rounded"
-                                    sx={{
-                                        ...theme.typography.commonAvatar,
-                                        ...theme.typography.mediumAvatar,
-                                        transition: 'all .2s ease-in-out',
-                                        background: theme.palette.secondary.light,
-                                        color: theme.palette.secondary.dark,
-                                        '&:hover': {
-                                            background: theme.palette.secondary.dark,
-                                            color: theme.palette.secondary.light
-                                        }
-                                    }}
-                                    onClick={handleLeftDrawerToggle}
-                                    color="inherit"
-                                >
-                                    <IconMenu2 stroke={1.5} size="1.3rem" />
-                                </Avatar>
-                        </ButtonBase>
-                    </div>
-                </Toolbar>
-            </AppBar>
+                    <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
+                            <Avatar
+                                variant="rounded"
+                                sx={{
+                                    ...theme.typography.commonAvatar,
+                                    ...theme.typography.mediumAvatar,
+                                    transition: 'all .2s ease-in-out',
+                                    background: theme.palette.secondary.light,
+                                    color: theme.palette.secondary.dark,
+                                    '&:hover': {
+                                        background: theme.palette.secondary.dark,
+                                        color: theme.palette.secondary.light
+                                    }
+                                }}
+                                onClick={handleLeftDrawerToggle}
+                                color="inherit"
+                            >
+                                <IconMenu2 stroke={1.5} size="1.3rem" />
+                            </Avatar>
+                            
+                    </ButtonBase>
+                    <IconButton variant="rounded" edge="start" color="inherit" aria-label="menu" 
+                        sx={{ mr: 2, backgroundColor: '#0081cb', borderRadius: '7px',
+                            '&:hover': {
+                            background: theme.palette.secondary.dark,
+                            color: theme.palette.secondary.light
+                        } }}>
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display: "inline", color: "#000" }}>
+                                {'Topics'}
+                    </Typography>
+            </Box>
+            
 
             {/* drawer */}
             <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
@@ -138,10 +163,18 @@ const MainLayout = () => {
             {/* main content */}
             <Main theme={theme} open={leftDrawerOpened}>
             <h1>1 -> hello</h1>
-            <h1>3 -> hello</h1>
                 {/* breadcrumb */}
                 <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
                 <Outlet />
+                <Box sx={{ flexGrow: 1 }}>
+                    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                        {Array.from(Array(6)).map((_, index) => (
+                        <Grid xs={2} sm={4} key={index}>
+                            <Item>{index + 1}</Item>
+                        </Grid>
+                        ))}
+                    </Grid>
+                </Box>
             </Main>
             {/* Customization settings */}
             <Customization />
