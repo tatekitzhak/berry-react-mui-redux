@@ -1,4 +1,4 @@
-import { Routes, Route, NavLink, Outlet } from "react-router-dom";
+import { Routes, Route, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { useState, lazy } from 'react';
 
@@ -19,7 +19,10 @@ import NavigationScroll from '@/layout/NavigationScroll';
 import Header from '@/layout/MainLayout/Header/index.js';
 import HeaderLayout from '@/layout/MainLayout/Header/index.js';
 import MainLayout from '@/layout/MainLayout/index';
+import { func } from "prop-types";
+
 const UtilsTypography = Loadable(lazy(() => import('@/views/utilities/Typography')));
+const TopicsDashboard = Loadable(lazy(() => import('@/views/utilities/TopicsDashboard')));
 const UtilsTablerIcons = Loadable(lazy(() => import('@/views/utilities/TablerIcons')));
 const UtilsShadow = Loadable(lazy(() => import('@/views/utilities/Shadow')));
 
@@ -37,20 +40,44 @@ function About(params) {
             About {console.log('About:')}
         </h1>
     )
-
 }
-function Topics1(params) {
+function TopicsDashboardLayout(props) {
+    return (
+        <>
+            <section style={{ padding: "1rem", marginTop: "68px" }}>
+                <h1>Topics Dashboard</h1>
+                <p>Topics Dashboard{console.log('Topics Dashboard:', props)}</p>
+                <nav>
+                <ul>
+                    <li>
+                        <NavLink to="topics-1/tabler-icons/1">Topic 1</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="topics-1/tabler-icons/2">Topic 2</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="topics-1/tabler-icons/3">Topic 3</NavLink>
+                    </li>
+                </ul>
+            </nav>
+            <Outlet />
+            </section>
+        </>
+    )
+}
+function ArticalLayout(props) {
+    let params = useParams();
     return (
         <h1>
-            Topics1 {console.log('Topics1:')}
+            ArticalLayout {console.log('ArticalLayout:', props, params)}
         </h1>
     )
-
 }
 // ==============================|| APP ||============================== //
 
-const App = () => {
+function App(props) {
     const [isAuthenticated, setIsAuthenticated] = useState(true);
+    let location = useLocation();
     const customization = useSelector((state) => state.customization);
     const theme = createTheme(customization);
     return (
@@ -69,27 +96,28 @@ const App = () => {
                     <Route path={'home'} element={<Home />}></Route>
                     <Route path="about" element={<About />}></Route>
                     <Route path="topics" element={<MainLayout />}>
+                        <Route index element={<TopicsDashboard {...props} topics={'topics'}/>} />
                         {
                             isAuthenticated && (
-                                <Route path=":topics-1/:tabler-icons" element={<UtilsTypography />}>
-
-                                </Route>
+                                <Route path=":topics/:subtopic" element={<UtilsTypography {...props} customization={customization} location={location} />} />
                             )
+                
                         }
-                        <Route path="util-typography" element={<UtilsTypography />} />
+                        <Route path=":topics/:subtopic/:artical" element={<UtilsTypography {...props} customization={customization} location={location} />} />        
+                        <Route path="util-typography" element={<UtilsTypography location={location}/>} />
                         <Route path="util-color" element={<UtilsTablerIcons />} />
                         <Route path="util-shadow" element={<UtilsShadow />} />
-                        <Route path="*" element={<h1>No page found {console.log('No page found')}</h1>} />
+                        <Route path="*" element={<h1>No page found {console.log('No page found 1')}</h1>} />
                     </Route>
                     <Route
-                            path="*"
-                            element={
-                                <main style={{ padding: "1rem", marginTop: "68px" }}>
-                                    <h1>404 Not Found</h1>
-                                    <p>There's nothing here!{console.log('No page found')}</p>
-                                </main>
-                            }
-                            />
+                        path="*"
+                        element={
+                            <main style={{ padding: "1rem", marginTop: "68px" }}>
+                                <h1>404 Not Found</h1>
+                                <p>There's nothing here!{console.log('No page found 2')}</p>
+                            </main>
+                        }
+                    />
                 </Routes>
             </ThemeProvider>
         </StyledEngineProvider>

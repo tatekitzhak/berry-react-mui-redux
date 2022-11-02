@@ -7,9 +7,6 @@ import Loadable from '@/ui-component/Loadable';
 // routes
 import MainRoutes from './MainRoutes';
 import AuthenticationRoutes from './AuthenticationRoutes';
-// utilities routing
-const UtilsTypography = Loadable(lazy(() => import('@/views/utilities/Typography')));
-
 
 // ==============================|| ROUTING RENDER ||============================== //
 

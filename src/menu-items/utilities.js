@@ -13,7 +13,7 @@ const icons = {
 
 const utilities = {
     id: 'utilities',
-    title: 'Utilities',
+    title: 'Topics',
     type: 'group',
     children: [
         {
@@ -58,6 +58,28 @@ const utilities = {
                     title: 'Material Icons',
                     type: 'item',
                     url: '/topics/topics-1/material-icons',
+                    breadcrumbs: false
+                }
+            ]
+        },
+        {
+            id: 'topics-2',
+            title: 'Topics-2',
+            type: 'collapse',
+            icon: icons.IconWindmill,
+            children: [
+                {
+                    id: 'tabler-icons',
+                    title: 'Tabler Icons',
+                    type: 'item',
+                    url: '/topics/topics-2/tabler-icons',
+                    breadcrumbs: false
+                },
+                {
+                    id: 'material-icons',
+                    title: 'Material Icons',
+                    type: 'item',
+                    url: '/topics/topics-2/material-icons',
                     breadcrumbs: false
                 }
             ]

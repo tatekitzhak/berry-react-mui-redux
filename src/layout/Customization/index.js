@@ -135,7 +135,7 @@ const Customization = () => {
                     <Grid container spacing={gridSpacing} sx={{ p: 3 }}>
                         <Grid item xs={12}>
                             {/* font family */}
-                            <SubCard title="Font Family">
+                            <SubCard title="Feel free to leave feedback">
                                 <FormControl>
                                     <RadioGroup
                                         aria-label="font-family"
@@ -143,15 +143,7 @@ const Customization = () => {
                                         onChange={(e) => setFontFamily(e.target.value)}
                                         name="row-radio-buttons-group"
                                     >
-                                        <FormControlLabel
-                                            value="Roboto"
-                                            control={<Radio />}
-                                            label="Roboto"
-                                            sx={{
-                                                '& .MuiSvgIcon-root': { fontSize: 28 },
-                                                '& .MuiFormControlLabel-label': { color: theme.palette.grey[900] }
-                                            }}
-                                        />
+                                         <AddReactionIcon />
                                         <FormControlLabel
                                             value="Poppins"
                                             control={<Radio />}
@@ -161,6 +153,7 @@ const Customization = () => {
                                                 '& .MuiFormControlLabel-label': { color: theme.palette.grey[900] }
                                             }}
                                         />
+                                         <AddReactionIcon />
                                         <FormControlLabel
                                             value="Inter"
                                             control={<Radio />}
