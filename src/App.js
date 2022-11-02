@@ -84,8 +84,9 @@ const App = () => {
                     <Route
                             path="*"
                             element={
-                                <main style={{ padding: "1rem" }}>
-                                    <h1>There's nothing here!{console.log('***')}</h1>
+                                <main style={{ padding: "1rem", marginTop: "68px" }}>
+                                    <h1>404 Not Found</h1>
+                                    <p>There's nothing here!{console.log('No page found')}</p>
                                 </main>
                             }
                             />
