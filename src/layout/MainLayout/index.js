@@ -167,10 +167,10 @@ const MainLayout = (props) => {
                 <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
                 <Outlet />
                 <Box sx={{ flexGrow: 1 }}>
-                    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                    <Grid container columns={{ xs: 4, sm: 8, md: 12 }}>
                         {Array.from(Array(6)).map((_, index) => (
                         <Grid xs={2} sm={4} key={index}>
-                            <Item>{index + 1}</Item>
+                            <Item sx={{padding: "0px"}}>{index + 1}quin nostrum exercitation illampu laborings nisi ut liquid ex ea commons construal</Item>
                         </Grid>
                         ))}
                     </Grid>
