@@ -1,12 +1,16 @@
 import dashboard from './dashboard';
 import pages from './pages';
-import utilities from './utilities';
+import Utilities from './utilities';
 import other from './other';
-
 // ==============================|| MENU ITEMS ||============================== //
+function menuItems(){
 
-const menuItems = {
-    items: [dashboard, pages, utilities, other]
-};
+console.log('utilities:',Utilities())
+    const menu = {
+        items: [dashboard, pages, Utilities(), other]
+    };
+    return menu;
+}
+
 
 export default menuItems;

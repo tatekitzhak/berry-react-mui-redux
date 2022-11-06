@@ -1,3 +1,7 @@
+import * as React from 'react';
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+
 // assets
 import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons';
 
@@ -9,10 +13,8 @@ const icons = {
     IconWindmill
 };
 
-// ==============================|| UTILITIES MENU ITEMS ||============================== //
-
-const utilities = {
-    id: 'utilities',
+const utilitiesTopics = {
+    id: 'topics',
     title: 'Topics',
     type: 'group',
     children: [
@@ -87,4 +89,21 @@ const utilities = {
     ]
 };
 
-export default utilities;
+// ==============================|| UTILITIES MENU ITEMS ||============================== //
+function Utilities(){
+    // const [utilities1, setUtilities] = useState();
+    // const [topics, setTopics] = React.useState({});
+    // const dispatch = useDispatch()
+
+    // // data fetch
+    // const topics = useSelector((state) => state.topicsSlice);
+    // useEffect(() => {
+    //     setTopics(utilitiesTopics)
+    //   });
+
+    
+    return utilitiesTopics;
+}
+
+
+export default Utilities;

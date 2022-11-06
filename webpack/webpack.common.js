@@ -2,6 +2,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
+var webpack = require('webpack');
 
 const paths = require('./paths')
 module.exports = {
@@ -42,6 +43,10 @@ module.exports = {
       template: paths.src + '/template.html', // template file
       filename: 'index.html', // output file
     }),
+    // Used this for to avoid or without using implements "import React from 'react'" 
+    new webpack.ProvidePlugin({
+      'React': 'react'
+    })
   ],
 
   // Determine how modules within the project are treated
@@ -57,7 +62,6 @@ module.exports = {
       { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
     ],
   },
-
   resolve: {
     modules: [paths.src, 'node_modules'],
     extensions: ['.js', '.jsx', '.json'],
@@ -65,5 +69,5 @@ module.exports = {
       '@': paths.src,
       assets: paths.public,
     },
-  },
+  }
 }
