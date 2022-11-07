@@ -77,7 +77,6 @@ function SubtopicLayout(props) {
     // const [searchParams] = useSearchParams();
     // let location = useLocation();
     // const params = useParams();
-     console.log("SubtopicLayout:",location); 
     return (
         <>
             <div>

@@ -5,11 +5,11 @@ import other from './other';
 // ==============================|| MENU ITEMS ||============================== //
 function menuItems(){
 
-console.log('utilities:',Utilities())
-    const menu = {
+    const menuItemTypes = {
         items: [dashboard, pages, Utilities(), other]
     };
-    return menu;
+
+    return menuItemTypes;
 }
 
 

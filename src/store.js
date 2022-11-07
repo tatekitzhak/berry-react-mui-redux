@@ -1,19 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux';
-import counterSlice from '@/features/counterSlice';
+
+// project imports
 import customizationSlice from '@/features/customizationCreateSlice';
-import usersSlice from "@/features/usersSlice";
-import fetchDataSlice from '@/features/fetchDataSlice';
-import topicsSlice from '@/features/topics/topicsSlice';
+// import topicsSlice from '@/features/topics/topicsSlice';
+import rootReducer from '@/features/slices';
 
 
 const store = configureStore({
     reducer: {
-      counter: counterSlice,
       customization: customizationSlice,
-      users: usersSlice,
-      fetchDataSlice: fetchDataSlice,
-      topicsSlice: topicsSlice
+      // topicsSlice: topicsSlice,
+      rootReducer
     }
   });
 

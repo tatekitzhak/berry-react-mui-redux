@@ -13,7 +13,7 @@ import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material'
 import { Avatar, ButtonBase } from '@mui/material'
 
 // project imports
-import Breadcrumbs from 'ui-component/extended/Breadcrumbs';
+import Breadcrumbs from '@/ui-component/extended/Breadcrumbs';
 import HeaderLayout from './Header';
 import Sidebar from './Sidebar';
 import Customization from '../Customization';
@@ -164,7 +164,7 @@ const MainLayout = (props) => {
             <Main theme={theme} open={leftDrawerOpened}>
             <h1>1 -> hello</h1>
                 {/* breadcrumb */}
-                <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
+                <Breadcrumbs separator={IconChevronRight} navigation={navigation()} icon title rightAlign />
                 <Outlet />
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container columns={{ xs: 4, sm: 8, md: 12 }}>
