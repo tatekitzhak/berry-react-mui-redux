@@ -1,10 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// https://jsonplaceholder.typicode.com/albums
+
 export const fetchTopics = createAsyncThunk(
-    'topics/fetchData',
-    async (param, thunkAPI) => {
-        console.log('topics createAsyncThunk:', param)
+    'explore/topics',
+    async (args, thunkAPI) => {
+        console.log('topics createAsyncThunk:', args)
         //const state = thunkAPI.getState();
         //const extra = thunkAPI.extra;
         //const requestId = thunkAPI.requestId;
@@ -15,7 +17,7 @@ export const fetchTopics = createAsyncThunk(
         //thunkAPI.fulfillWithValue("fulfilled", { a: 0 });
         try {
             // thunkAPI.dispatch(enableLoading());
-            const { data } = await axios.get("https://jsonplaceholder.typicode.com/posts");
+            const { data } = await axios.get("https://jsonplaceholder.typicode.com/albums" );
               console.log('data:',data)
               // set data
             //   thunkAPI.dispatch(incrementCount());
@@ -36,34 +38,37 @@ export const fetchTopics = createAsyncThunk(
 );
 
 const initialState = {
-    data: [],
+    topics: [],
     loading: false,
     isSuccess: false,
     message: "",
   };
 
 const topicsSlice = createSlice({
-    name: 'topics',
+    name: 'explore/topics',
     initialState,
     reducers: {
         enableLoading: (state, action) => {
             state.loading = true;
           },
-          disableLoading: (state, action) => {
-            state.loading = false;
-          }
+        disableLoading: (state, action) => {
+        state.loading = false;
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchTopics.pending, (state, action) => {
-                console.log('fetchTopics.pending:',action);
+                console.log('.pending:',action);
             })
             .addCase(fetchTopics.fulfilled, (state, action) => {
-                console.log('fetchTopics.fulfilled:',action);
+                console.log('.fulfilled:',action);
+                state.topics = action.payload
             })
             .addCase(fetchTopics.rejected, (state, action) => {
-                console.log('fetchTopics.rejected:',action);
+                console.log('.rejected:',action);
             });
     }
 });
+
+export const topicsSliceSelector = state => state;
 
 export default topicsSlice.reducer;
