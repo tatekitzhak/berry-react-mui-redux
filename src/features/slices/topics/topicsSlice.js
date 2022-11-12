@@ -6,7 +6,6 @@ import axios from "axios";
 export const fetchTopics = createAsyncThunk(
     'explore/topics',
     async (args, thunkAPI) => {
-        console.log('topics createAsyncThunk:', args)
         //const state = thunkAPI.getState();
         //const extra = thunkAPI.extra;
         //const requestId = thunkAPI.requestId;
@@ -18,7 +17,7 @@ export const fetchTopics = createAsyncThunk(
         try {
             // thunkAPI.dispatch(enableLoading());
             const { data } = await axios.get("https://jsonplaceholder.typicode.com/albums" );
-              console.log('data:',data)
+              //console.log('data:',data)
               // set data
             //   thunkAPI.dispatch(incrementCount());
               return data;
@@ -69,6 +68,6 @@ const topicsSlice = createSlice({
     }
 });
 
-export const topicsSliceSelector = state => state;
+export const selectTopics = state => state.rootReducer;
 
 export default topicsSlice.reducer;

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const initialState = {
@@ -24,16 +24,7 @@ export const initialState = {
         state.hasErrors = true
       },
     },
-  })
-
-// Three actions generated from the slice
-export const { getSubtopics, getSubtopicsSuccess, getSubtopicsFailure } = subtopicSlice.actions
-
-// A selector
-export const subtopicsSelector = state => state.rootReducer.subtopic;
-
-// The reducer
-export default subtopicSlice.reducer;
+  });
 
 // Asynchronous thunk action
 export function fetchSubtopics() {
@@ -49,4 +40,32 @@ export function fetchSubtopics() {
         dispatch(getSubtopicsFailure())
       }
     }
-  }
+  };
+
+// Three actions generated from the slice
+export const { getSubtopics, getSubtopicsSuccess, getSubtopicsFailure } = subtopicSlice.actions
+
+// A selector
+export const selectSubtopics = state => {
+    console.log('selectSubtopics:',state)
+    return state.rootReducer.subtopic.subtopics
+};
+
+// Memoized Selector
+export const selectMemoizedSubtopics = createSelector(
+    /* [selectSubtopics, (state, userId) => { console.log('selectMemoizedSubtopics1:', state.rootReducer.subtopic); return state.rootReducer}],
+    (subtopics, userId) => { 
+        console.log('selectMemoizedSubtopics:', subtopics, 'userId:',userId)
+        return subtopics === userId.subtopics
+    } */
+    state => state.rootReducer.subtopic,
+    (items) => {
+        console.log('selectMemoizedSubtopics', items)
+        return items
+    }
+  );
+
+// The reducer
+export default subtopicSlice.reducer;
+
+
