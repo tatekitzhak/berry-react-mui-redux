@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTopics } from '@/features/slices/topics/topicsSlice';
-import { topicsSliceSelector } from '@/features/slices/topics/topicsSlice';
+import { selectTopics } from '@/features/slices/topics/topicsSlice';
 // import our subtopics selector
-import { fetchSubtopics, subtopicsSelector } from '@/features/slices/subtopics/subtopicSlice';	
+import { fetchSubtopics, selectSubtopics, selectMemoizedSubtopics } from '@/features/slices/subtopics/subtopicSlice';	
 
 // assets
 import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons';
@@ -94,30 +94,66 @@ const utilitiesTopics = {
 
 // ==============================|| UTILITIES MENU ITEMS ||============================== //
 function Utilities(){
-    const [topics, setTopics] = useState({});
+    const [topicsMenu, setTopicsMenu] = useState({});
     const dispatch = useDispatch()
-     // // data fetch
 
-     const { subtopics, recipes, loading, hasErrors } = useSelector(subtopicsSelector)
-     console.log('Utilities subtopics: ', subtopics, recipes, loading, hasErrors );
+     // Select datas
+     const subtopics = useSelector( selectMemoizedSubtopics ) // selectSubtopics
+     console.log('Utilities subtopics: ', subtopics );
 
-     const data = useSelector((state) => state);
-     console.log('Utilities useSelector:', data)
+     const topics = useSelector(selectTopics);
+     // console.log('Utilities topics:', topics)
 
-     /*
-     const data = useSelector(topicsSliceSelector);
-     console.log('Utilities useSelector:', data)
-     */
-   
     useEffect(() => {
         dispatch( fetchTopics() );
         dispatch( fetchSubtopics() );
-        setTopics(utilitiesTopics)
+        setTopicsMenu(utilitiesTopics)
       },[dispatch]);
       
     
-    return topics;
+    return topicsMenu;
 }
 
 
 export default Utilities;
+
+/**
+ 
+const utilitiesTopics = {
+    id: 'topics',
+    title: 'Topics',
+    type: 'group',
+}
+ 
+for(let i=1; i<=3; i++){
+    let topic = {};
+    let subtopics = [];
+
+    for(let j=1; j<=4; j++){
+      let subtopicItems = {};
+      subtopicItems.id = `subtopic-${j}`;
+      subtopicItems.title = 'subtopic';
+      subtopicItems.type = 'item';
+      subtopicItems.url = '/explore/topics/util-typography';
+      subtopicItems.icon = 'IconTypography';
+      subtopicItems.breadcrumbs = false;
+      subtopics.push(subtopicItems)
+        
+        let articles = [];
+        for(k=1; k<=5; k++){
+            let articleItems = {};
+            articleItems.id = `article-${k}`;
+            articleItems.title = 'article';
+            articleItems.type = 'item';
+            articleItems.url = '/explore/topics/topics-2/tabler-icons';
+            articleItems.breadcrumbs = false;
+            articles.push(articleItems)
+        }
+        subtopicItems.children = articles;
+    }
+    topic.children = subtopics;
+    utilitiesTopics['children'] = topic.children
+    console.log('utilitiesTopics:',utilitiesTopics)
+}
+
+ */
