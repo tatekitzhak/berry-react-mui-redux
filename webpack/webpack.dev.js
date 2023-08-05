@@ -11,7 +11,7 @@ module.exports = {
     open: true,
     compress: true,
     hot: true,
-    port: 3030,
+    port: 8080,
   },
 
   module: {
