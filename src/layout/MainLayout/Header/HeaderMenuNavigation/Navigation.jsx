@@ -14,6 +14,7 @@ export default function HeaderMenu() {
         bottom: false,
         right: false,
     });
+    const [menuItems, setMenuItems] = React.useState(['Home', 'About', 'Explore', 'Contact']);
     const [breakpointsStatus, SetBreakpointsStatus] = React.useState(false);
     const theme = useTheme();
     const matchesXs = useMediaQuery(theme.breakpoints.down('md'));
@@ -30,6 +31,7 @@ export default function HeaderMenu() {
         SetBreakpointsStatus(matchesXs)
     }, [matchesXs]);
 
+    // Mobile BreakpointsStatus
     const list = (anchor) => (
         <Box
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -38,13 +40,16 @@ export default function HeaderMenu() {
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                {menuItems.map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
                                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                             </ListItemIcon>
-                            <ListItemText primary={text} />
+                            
+                            <NavLink  to={`${text.toLowerCase()}`} state={`From ${text} Page`} >
+                                <ListItemText primary={text} />
+                            </NavLink>
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -69,6 +74,7 @@ export default function HeaderMenu() {
           </IconButton>
         </Box>
     );
+
     const drawer = (anchorType) => (
         <Drawer
             anchor={anchorType}
@@ -78,10 +84,11 @@ export default function HeaderMenu() {
             {list(anchorType)}
         </Drawer>
     )
+
     return (
         <div>
-            {
-                !breakpointsStatus ? ['Home', 'About', 'Explore', 'Contact'].map((anchor) => (
+            { // Large screen BreakpointsStatus
+                !breakpointsStatus ? menuItems.map((anchor) => (
                     <React.Fragment key={anchor}>
                         
                         <NavLink  to={`${anchor.toLowerCase()}`} state={`From ${anchor} Page`} >

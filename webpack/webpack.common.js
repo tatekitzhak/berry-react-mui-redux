@@ -46,7 +46,12 @@ module.exports = {
     // Used this for to avoid or without using implements "import React from 'react'" 
     new webpack.ProvidePlugin({
       'React': 'react'
-    })
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env': JSON.stringify(process.env)
+      // ...
+    }),
   ],
 
   // Determine how modules within the project are treated

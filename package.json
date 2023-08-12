@@ -6,7 +6,7 @@
   "author": "",
   "homepage": "",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack serve --config webpack/webpack.config.js --env env=dev",
+    "start": "cross-env NODE_ENV=development PORT=3000 webpack serve --config webpack/webpack.config.js --env env=dev",
     "build": "cross-env NODE_ENV=production webpack build --config webpack/webpack.config.js --env env=prod",
     "lint:view": "eslint 'src/**/*.js' || true",
     "lint:fix": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",

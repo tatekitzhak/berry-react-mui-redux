@@ -1,3 +1,13 @@
+if(typeof process.env.NODE_ENV == "undefined")
+{
+  process.env.NODE_ENV = "dev";
+}
+
+let server_hosts = {
+    "dev": "0.0.0.0",
+    "production": "http://askmediadev.com"
+};
+
 module.exports = {
   // Set the mode to development or production
   mode: 'development',
@@ -10,8 +20,9 @@ module.exports = {
     historyApiFallback: true,
     open: true,
     compress: true,
-    hot: true,
-    port: 8080,
+    hot: true, 
+    host: process.env.NODE_ENV == "development" ? server_hosts.dev: server_hosts.production,
+    port: process.env.PORT,
   },
 
   module: {

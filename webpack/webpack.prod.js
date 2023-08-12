@@ -1,13 +1,16 @@
+const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const paths = require('./paths')
 
+
 module.exports = {
+  // Set the mode to development or production
   mode: 'production',
   devtool: false,
   output: {
     path: paths.build,
-    publicPath: '/',
+    publicPath: paths.build,
     filename: 'js/[name].[contenthash].bundle.js',
   },
   module: {

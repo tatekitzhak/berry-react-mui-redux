@@ -10,6 +10,7 @@ import Footer from '@/views/footer/footer.jsx'
 // style + assets
 import '@/assets/scss/style.scss';
 import config from './config';
+// console.log('process.env:',process.env.NODE_ENV == "development" ? "localhost": 123);
 
 // ==============================|| REACT DOM RENDER  ||============================== //
 const container = document.getElementById('root');

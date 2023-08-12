@@ -155,7 +155,7 @@ function App(props) {
                         <Route path="*" element={<h1>No page found {console.log('No page found 1')}</h1>} />
                     </Route>
                     <Route
-                        path="*"
+                        path="/"
                         element={
                             <main style={{ padding: "1rem", marginTop: "68px" }}>
                                 <h1>404 Not Found</h1>
