@@ -8,7 +8,7 @@ import EarningCard from '@/views/dashboard/Default/EarningCard';
 // ==============================|| SAMPLE PAGE ||============================== //
 
 function Footer(params) {
-    
+
     return (
         <MainCard title={params.params}>
             <Typography variant="body2">
@@ -18,23 +18,31 @@ function Footer(params) {
                 qui officiate descent molls anim id est labours.
             </Typography>
             <Grid container direction="column"
-                  alignItems="center"
-                  justifyContent="center">
+                alignItems="center"
+                justifyContent="center">
 
                 <Grid item xs={3}>
                     <EarningCard></EarningCard>
+                    <Grid item sx={{ mb: 1.25 }}>
 
-                    Ask Media Dev:
-    About
-    Contact
+                        <Typography>Ask Media Dev:</Typography>
+                        <Typography>About</Typography>
+                        <Typography>Contact</Typography>
 
-    Legal:
-    Accessibility
-    Terms of Use
-    Privacy Policy
-    Copyright Policy
+                    </Grid>
+                    <Grid item sx={{ mb: 1.25 }}>
+
+                        <Typography>Legal:</Typography>
+                        <Typography>Accessibility</Typography>
+                        <Typography>Terms of Use</Typography>
+                        <Typography>Privacy Policy</Typography>
+                        <Typography>Copyright Policyt</Typography>
+
+                    </Grid>
                 </Grid>
             </Grid>
+            <Typography>© 2023 askmediadev.com </Typography>
+            <Typography> The project is currently in public beta</Typography>
         </MainCard>
     )
 };
