@@ -15,7 +15,7 @@ const MenuList = () => {
             default:
                 return (
                     <Typography key={item.id+i} variant="h6" color="error" align="center">
-                        Menu Items Error
+                        Menu Items Error (Do: A Loader spinning circle)
                     </Typography>
                 );
         }

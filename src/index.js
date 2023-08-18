@@ -21,7 +21,7 @@ root.render(
             <BrowserRouter basename={config.basename}>
                 <App />
             </BrowserRouter>
-            <Footer />
+            <Footer params={"Footer Page"}/>
         </ReduxStoreWrapper>
     </>
 );

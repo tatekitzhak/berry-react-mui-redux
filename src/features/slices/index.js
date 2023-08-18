@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
-
-import subtopicSlice from '@/features/slices/subtopics/subtopicSlice';
 import topicsSlice from '@/features/slices/topics/topicsSlice';
+import subtopicSlice from '@/features/slices/subtopics/subtopicSlice';
 
 const rootReducer = combineReducers({
-    subtopic: subtopicSlice,
-    topics: topicsSlice
+    topics: topicsSlice,
+    subtopic: subtopicSlice
 })
 
 export default rootReducer

@@ -16,16 +16,16 @@ const icons = {
     IconWindmill
 };
 
-const utilitiesTopics = {
-    id: 'topics',
-    title: 'Topics',
+const utilitiesCategories = {
+    id: 'categories',
+    title: 'Categories',
     type: 'group',
     children: [
         {
             id: 'util-typography',
             title: 'Typography',
             type: 'item',
-            url: '/explore/topics/util-typography',
+            url: '/explore/categories/util-typography',
             icon: icons.IconTypography,
             breadcrumbs: false
         },
@@ -33,7 +33,7 @@ const utilitiesTopics = {
             id: 'util-color',
             title: 'Color',
             type: 'item',
-            url: '/explore/topics/util-color',
+            url: '/explore/categories/util-color',
             icon: icons.IconPalette,
             breadcrumbs: false
         },
@@ -41,50 +41,50 @@ const utilitiesTopics = {
             id: 'util-shadow',
             title: 'Shadow',
             type: 'item',
-            url: '/explore/topics/util-shadow',
+            url: '/explore/categories/util-shadow',
             icon: icons.IconShadow,
             breadcrumbs: false
         },
         {
-            id: 'topics-1',
-            title: 'Topics-1',
+            id: 'categories-1',
+            title: 'Categories-1',
             type: 'collapse',
             icon: icons.IconWindmill,
             children: [
                 {
                     id: 'tabler-icons',
-                    title: 'Tabler Icons',
+                    title: 'subcategory 1',
                     type: 'item',
-                    url: '/explore/topics/topics-1/tabler-icons',
+                    url: '/explore/categories/categories-1/tabler-icons',
                     breadcrumbs: false
                 },
                 {
                     id: 'material-icons',
-                    title: 'Material Icons',
+                    title: 'subcategory 2',
                     type: 'item',
-                    url: '/explore/topics/topics-1/material-icons',
+                    url: '/explore/categories/categories-1/material-icons',
                     breadcrumbs: false
                 }
             ]
         },
         {
-            id: 'topics-2',
-            title: 'Topics-2',
+            id: 'categories-2',
+            title: 'Categories-2',
             type: 'collapse',
             icon: icons.IconWindmill,
             children: [
                 {
                     id: 'tabler-icons',
-                    title: 'Tabler Icons',
+                    title: 'subcategory 1',
                     type: 'item',
-                    url: '/explore/topics/topics-2/tabler-icons',
+                    url: '/explore/categories/categories-2/tabler-icons',
                     breadcrumbs: false
                 },
                 {
                     id: 'material-icons',
-                    title: 'Material Icons',
+                    title: 'subcategory 2',
                     type: 'item',
-                    url: '/explore/topics/topics-2/material-icons',
+                    url: '/explore/categories/categories-2/material-icons',
                     breadcrumbs: false
                 }
             ]
@@ -94,66 +94,65 @@ const utilitiesTopics = {
 
 // ==============================|| UTILITIES MENU ITEMS ||============================== //
 function Utilities(){
-    const [topicsMenu, setTopicsMenu] = useState({});
+    const [categoriesMenu, setCategoriesMenu] = useState({});
     const dispatch = useDispatch()
 
      // Select datas
-     const subtopics = useSelector( selectMemoizedSubtopics ) // selectSubtopics
-     console.log('Utilities subtopics: ', subtopics );
+     const subcategories = useSelector( selectMemoizedSubtopics ) // selectSubtopics
+     console.log('Utilities subtopics: ', subcategories );
 
-     const topics = useSelector(selectTopics);
-     // console.log('Utilities topics:', topics)
+     const categories = useSelector(selectTopics);
+     console.log('Utilities topics:', categories)
 
     useEffect(() => {
         dispatch( fetchTopics() );
         dispatch( fetchSubtopics() );
-        setTopicsMenu(utilitiesTopics)
+        setCategoriesMenu(utilitiesCategories)
       },[dispatch]);
       
     
-    return topicsMenu;
+    return categoriesMenu;
 }
 
 
 export default Utilities;
 
-/**
  
-const utilitiesTopics = {
-    id: 'topics',
-    title: 'Topics',
+const utilitiesCategories1 = {
+    id: 'categories',
+    title: 'Categories',
     type: 'group',
 }
  
 for(let i=1; i<=3; i++){
-    let topic = {};
-    let subtopics = [];
+    let category = {};
+    let categories = [];
 
     for(let j=1; j<=4; j++){
-      let subtopicItems = {};
-      subtopicItems.id = `subtopic-${j}`;
-      subtopicItems.title = 'subtopic';
-      subtopicItems.type = 'item';
-      subtopicItems.url = '/explore/topics/util-typography';
-      subtopicItems.icon = 'IconTypography';
-      subtopicItems.breadcrumbs = false;
-      subtopics.push(subtopicItems)
+      let categoryItem = {};
+      categoryItem.id = `category-${j}`;
+      categoryItem.title = `category-${j}`;
+      categoryItem.type = 'item';
+      categoryItem.url = '/explore/categories/util-typography';
+      categoryItem.icon = 'IconTypography';
+      categoryItem.breadcrumbs = false;
+      categories.push(categoryItem)
         
-        let articles = [];
-        for(k=1; k<=5; k++){
-            let articleItems = {};
-            articleItems.id = `article-${k}`;
-            articleItems.title = 'article';
-            articleItems.type = 'item';
-            articleItems.url = '/explore/topics/topics-2/tabler-icons';
-            articleItems.breadcrumbs = false;
-            articles.push(articleItems)
+        let subcategories = [];
+        for(let k=1; k<=5; k++){
+            let subcategoryItem = {};
+            subcategoryItem.id = `subcategory-${k}`;
+            subcategoryItem.title = `subcategory-${k}`;
+            subcategoryItem.type = 'item';
+            subcategoryItem.url = '/explore/categories/categories-2/tabler-icons';
+            subcategoryItem.breadcrumbs = false;
+            subcategories.push(subcategoryItem)
         }
-        subtopicItems.children = articles;
+        categoryItem.children = subcategories;
     }
-    topic.children = subtopics;
-    utilitiesTopics['children'] = topic.children
-    console.log('utilitiesTopics:',utilitiesTopics)
+    category.children = categories;
+    utilitiesCategories1['children'] = category.children
+    console.log('utilitiesCategories::',utilitiesCategories1)
 }
 
- */
+

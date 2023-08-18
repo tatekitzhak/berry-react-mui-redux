@@ -12,6 +12,7 @@ export const initialState = {
     initialState,
     reducers: {
       getSubtopics: state => {
+        state.subtopics
         state.loading = true
       },
       getSubtopicsSuccess: (state, { payload }) => {

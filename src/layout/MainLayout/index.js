@@ -122,6 +122,7 @@ const MainLayout = (props) => {
                 {/* <HeaderLayout handleLeftDrawerToggle={handleLeftDrawerToggle} /> */}
                     
                         {/* Sidebar Button icon, drawer open/close */}
+                    {/*                         
                     <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
                             <Avatar
                                 variant="rounded"
@@ -138,21 +139,25 @@ const MainLayout = (props) => {
                                 }}
                                 onClick={handleLeftDrawerToggle}
                                 color="inherit"
-                            >
+                            >2222
                                 <IconMenu2 stroke={1.5} size="1.3rem" />
                             </Avatar>
                             
                     </ButtonBase>
-                    <IconButton variant="rounded" edge="start" color="inherit" aria-label="menu" 
+
+                     */}
+                    <IconButton variant="rounded" edge="end" color="inherit" aria-label="menu" 
                         sx={{ mr: 2, backgroundColor: '#0081cb', borderRadius: '7px',
                             '&:hover': {
                             background: theme.palette.secondary.dark,
-                            color: theme.palette.secondary.light
-                        } }}>
+                            color: 'red'
+                        } }}
+                        onClick={handleLeftDrawerToggle}
+                        color="inherit" >
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display: "inline", color: "#000" }}>
-                                {'Topics'}
+                                {' Topics '}
                     </Typography>
             </Box>
             
@@ -162,7 +167,7 @@ const MainLayout = (props) => {
 
             {/* main content */}
             <Main theme={theme} open={leftDrawerOpened}>
-            <h1>1 -> hello</h1>
+                <h1>1 -> hello</h1>
                 {/* breadcrumb */}
                 <Breadcrumbs separator={IconChevronRight} navigation={navigation()} icon title rightAlign />
                 <Outlet />

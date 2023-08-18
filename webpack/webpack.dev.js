@@ -4,7 +4,7 @@ if(typeof process.env.NODE_ENV == "undefined")
 }
 
 let server_hosts = {
-    "dev": "0.0.0.0",
+    "dev": "localhost", // 0.0.0.0 
     "production": "http://askmediadev.com"
 };
 
