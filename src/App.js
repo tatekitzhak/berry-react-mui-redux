@@ -19,10 +19,11 @@ import NavigationScroll from '@/layout/NavigationScroll';
 import Header from '@/layout/MainLayout/Header/index.js';
 import HeaderLayout from '@/layout/MainLayout/Header/index.js';
 import MainLayout from '@/layout/MainLayout/index';
+import Footer from '@/views/footer/footer.jsx'
 import { func } from "prop-types";
 
 const UtilsTypography = Loadable(lazy(() => import('@/views/utilities/Typography')));
-const TopicsDashboard = Loadable(lazy(() => import('@/views/utilities/TopicsDashboard')));
+const NavigationDashboard = Loadable(lazy(() => import('@/views/utilities/NavigationDashboard')));
 const UtilsTablerIcons = Loadable(lazy(() => import('@/views/utilities/TablerIcons')));
 const UtilsShadow = Loadable(lazy(() => import('@/views/utilities/Shadow')));
 
@@ -33,6 +34,7 @@ function Page(params) {
                 <h1>{params.params}: 404 Not Found</h1>
                 <p>There's nothing here!{console.log('No page found 2:', params)}</p>
             </main>
+            <Footer params={"Footer Page"}/>
         </>
     )
 
@@ -139,8 +141,9 @@ function App(props) {
                     <Route path="/" element={ <Page params={"Root"}/> } />
                     <Route path={'home'} element={<Page params={"Home"}/>}></Route>
                     <Route path="about" element={<Page params={"About"}/>}></Route>
-                    <Route path="explore" element={<MainLayout />}>
-                        <Route index element={<TopicsDashboard {...props} topics={'topics'} />} />
+
+                    <Route path="explore" element={<MainLayout args={"This is props"} location={location}/>}>
+                        <Route index element={<NavigationDashboard location={location} />} />
                         {
                             isAuthenticated && (
                                 <Route path=":topics/:subtopic"
@@ -155,7 +158,9 @@ function App(props) {
                         <Route path="util-shadow" element={<UtilsShadow />} />
                     </Route>
                     <Route path="contact" element={<Page params={["Contact", " Have a question, comment or concern? Send a message to: ask@askmediadev.com "]}/>}></Route>
+                    
                 </Routes>
+                
             </ThemeProvider>
         </StyledEngineProvider>
     );

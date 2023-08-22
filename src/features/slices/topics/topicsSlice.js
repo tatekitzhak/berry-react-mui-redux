@@ -56,14 +56,14 @@ const topicsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchTopics.pending, (state, action) => {
-                console.log('.pending:',action);
+                
             })
             .addCase(fetchTopics.fulfilled, (state, action) => {
-                console.log('.fulfilled:',action);
+                ;
                 state.topics = action.payload
             })
             .addCase(fetchTopics.rejected, (state, action) => {
-                console.log('.rejected:',action);
+               
             });
     }
 });

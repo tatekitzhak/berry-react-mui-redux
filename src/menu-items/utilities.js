@@ -97,17 +97,13 @@ const utilitiesCategories1 = {
     title: 'Categories',
     type: 'group',
 }
-for (const property in utilitiesCategories) {
-    console.log(`${property}: ${utilitiesCategories[property]}`);
-  }
-  
  
 for(let i=1; i<=3; i++){
     let category = {};
     let categories = [
         {
             id: 'ask-chatgpt',
-            title: 'Ask ChatGPT',
+            title: 'Ask chat GPT',
             type: 'item',
             url: '/explore/categories/ask-chatgpt',
             icon: icons.IconTypography,
@@ -146,7 +142,7 @@ for(let i=1; i<=3; i++){
             subcategoryItem.id = `subcategory-${k}`;
             subcategoryItem.title = `subcategory-${k}`;
             subcategoryItem.type = 'item';
-            subcategoryItem.url = '/explore/categories/categories-2/tabler-icons';
+            subcategoryItem.url = `/explore/categories/categories-${j}/subcategory-${k}`;
             subcategoryItem.breadcrumbs = false;
             subcategories.push(subcategoryItem)
         }

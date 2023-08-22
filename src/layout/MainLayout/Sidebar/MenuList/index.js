@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 
 // project imports
 import NavGroup from './NavGroup';
-import menuItems from 'menu-items';
+import menuItems from '@/menu-items';
 
 // ==============================|| SIDEBAR MENU LIST ||============================== //
 
@@ -15,7 +15,7 @@ const MenuList = () => {
             default:
                 return (
                     <Typography key={item.id+i} variant="h6" color="error" align="center">
-                        Menu Items Error (Do: A Loader spinning circle)
+                        Menu Items Error (Do a Loader spinning circle)
                     </Typography>
                 );
         }

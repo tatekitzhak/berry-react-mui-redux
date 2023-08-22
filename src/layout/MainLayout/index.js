@@ -21,6 +21,8 @@ import navigation from '@/menu-items/index.js';
 import { drawerWidth } from 'store/constant';
 import { SET_MENU } from 'store/actions';
 import { set_menu } from '@/features/customizationCreateSlice';
+import { selectMemoizedSubtopics } from '@/features/slices/subtopics/subtopicSlice';	
+import Footer from '@/views/footer/footer.jsx'
 
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
@@ -86,8 +88,12 @@ const Item = styled('div')(({ theme }) => ({
 // ==============================|| MAIN LAYOUT ||============================== //
 
 const MainLayout = (props) => {
+    // console.log('MainLayout props:', props);
     const theme = useTheme();
     const matchDownMd = useMediaQuery(theme.breakpoints.down('lg'));
+
+    const subcategories = useSelector( selectMemoizedSubtopics ) // selectSubtopics
+    //  console.log('MainLayout subtopics: ', subcategories);
 
     // Handle left drawer
     const leftDrawerOpened = useSelector((state) => state.customization.opened);
@@ -147,10 +153,12 @@ const MainLayout = (props) => {
 
                      */}
                     <IconButton variant="rounded" edge="end" color="inherit" aria-label="menu" 
-                        sx={{ mr: 2, backgroundColor: '#0081cb', borderRadius: '7px',
+                        sx={{ mr: 2, backgroundColor: '#FD7F51', borderRadius: '7px',
                             '&:hover': {
-                            background: theme.palette.secondary.dark,
-                            color: 'red'
+                            background: '#fff',
+                            color: 'red',
+                            border: 1,
+                            borderColor: '#FD7F51'
                         } }}
                         onClick={handleLeftDrawerToggle}
                         color="inherit" >
@@ -170,7 +178,7 @@ const MainLayout = (props) => {
                 <h1>1 -> hello</h1>
                 {/* breadcrumb */}
                 <Breadcrumbs separator={IconChevronRight} navigation={navigation()} icon title rightAlign />
-                <Outlet />
+                
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container columns={{ xs: 4, sm: 8, md: 12 }}>
                         {Array.from(Array(6)).map((_, index) => (
@@ -180,9 +188,12 @@ const MainLayout = (props) => {
                         ))}
                     </Grid>
                 </Box>
+                <Outlet />
+                <Footer params={"Footer Page"}/>
             </Main>
             {/* Customization settings */}
             <Customization />
+            
         </Box>
     );
 };

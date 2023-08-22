@@ -4,8 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 // project imports
 import App from 'App';
 import ReduxStoreWrapper from '@/store';
-import Footer from '@/views/footer/footer.jsx'
-
 
 // style + assets
 import '@/assets/scss/style.scss';
@@ -21,7 +19,7 @@ root.render(
             <BrowserRouter basename={config.basename}>
                 <App />
             </BrowserRouter>
-            <Footer params={"Footer Page"}/>
+            
         </ReduxStoreWrapper>
     </>
 );
