@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 import { Routes, Route, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMemoizedSubtopics } from '@/features/slices/subtopics/subtopicSlice';
@@ -23,7 +23,7 @@ export default function NavigationDashboard(props) {
     const [categoriesLinks, setCategoriesLinks] = useState({});
     const dispatch = useDispatch()
     const subcategories = useSelector(selectMemoizedSubtopics) // selectSubtopics
-    
+    var filtered = [];
     useEffect(() => {
         // dispatch( fetchTopics() );
         // dispatch( fetchSubtopics() );
@@ -34,33 +34,77 @@ export default function NavigationDashboard(props) {
     }, [categoriesLinks]);
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <Typography> Categories</Typography>
+            <Typography> Services</Typography>
             <Grid container spacing={2}>
                 {
-                     menuItems().items.map((item, i) => {
+                    //  menuItems().items.map((item, i) => {
+                    //     switch (item.id) {
+                    //         case 'categories':
+                    //             console.log('categories:', item.children, i)
+                    //             item.children.map((categories, index) => {
+                    //                 console.log('categories:', categories.title)
+
+                    //                 if(categories.children !== undefined)
+                    //                 { 
+                    //                     // console.log('categories, index:', categories.children, index)
+                    //                     categories.children.map((subcategory, x) => {
+                    //                         console.log('topic, x:', subcategory.title, x)
+                    //                     })
+                    //                 }
+
+                    //               })
+
+                    //             // return item;
+                    //         default:
+                    //             console.log('error:', item, i)
+                    //             // return 'error'
+                    //     }
+                    // })
+                    
+                    menuItems().items.map((item, i) => {
                         switch (item.id) {
                             case 'categories':
-                                console.log('categories:', item.children, i)
-                                item.children.map((categories, index) => {
-                                    console.log('categories:', categories.title)
 
-                                    if(categories.children !== undefined)
-                                    { 
-                                        // console.log('categories, index:', categories.children, index)
-                                        categories.children.map((subcategory, x) => {
-                                            console.log('topic, x:', subcategory.title, x)
-                                        })
-                                    }
+                                return (
+                                    <Fragment key={i}>
+                                        {
+                                            item.children.map((categories, index) => {
+                                                return (
+                                                    <Grid xs={12} md={5} lg={4} key={index}>
+                                                        <Item>
+                                                            <Box id="category-a" sx={{ fontSize: '12px', textTransform: 'uppercase' }}  >
+                                                                {categories.title}
+                                                               
+                                                            </Box>
+                                                            <Box component="ul" aria-labelledby="category-a" sx={{ pl: 2 }}>
+                                                            {
+                                                                
+                                                                categories.children?.map((subcategory, x) => {
+                                                                    return(
+                                                                        <li key={x}><NavLink to={`${subcategory.url}`}> { subcategory.title }</NavLink></li>
+                                                                    )
+                                                                    
+                                                                })
+                                                                
+                                                            }
+                                                            
+                                                            </Box>
+                                                        </Item>
+                                                    </Grid>
 
-                                  })
-                                
-                                // return item;
+                                                )
+                                            })
+
+                                        }
+                                    </Fragment>);
+
+                            // return item;
                             default:
                                 console.log('error:', item, i)
-                                // return 'error'
+                            // return 'error'
                         }
                     })
-                    
+
                 }
                 <Grid xs={12} md={5} lg={4}>
                     <Item>
