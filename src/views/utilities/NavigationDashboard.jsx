@@ -23,7 +23,6 @@ export default function NavigationDashboard(props) {
     const [categoriesLinks, setCategoriesLinks] = useState({});
     const dispatch = useDispatch()
     const subcategories = useSelector(selectMemoizedSubtopics) // selectSubtopics
-    var filtered = [];
     useEffect(() => {
         // dispatch( fetchTopics() );
         // dispatch( fetchSubtopics() );
