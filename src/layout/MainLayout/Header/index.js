@@ -14,6 +14,8 @@ import LogoSection from '../LogoSection';
 import SearchSection from './SearchSection';
 import ProfileSection from './ProfileSection';
 import NotificationSection from './NotificationSection';
+import SignIn from './user/SignInButton';
+import SignOut from './user/SignOutButton';
 import HeaderMenu from '@/layout/MainLayout/Header/HeaderMenuNavigation/Navigation';
 import { set_menu } from '@/features/customizationCreateSlice';
 
@@ -21,7 +23,7 @@ import { set_menu } from '@/features/customizationCreateSlice';
 import { IconMenu2 } from '@tabler/icons';
 
 function Header({handleLeftDrawerToggle}) {
-    const [isUser, setIsUser] = React.useState(true);
+    const [isUser, setIsUser] = React.useState(false);
     const theme = useTheme();
     return (
         <>
@@ -54,14 +56,12 @@ function Header({handleLeftDrawerToggle}) {
                         <ProfileSection />
                     </> 
                     : 
-                    <div>
-                        <Button variant="contained" size="medium">
-                            Login
-                        </Button>
-                        <Button variant="contained" size="medium">
-                            Sign up
-                        </Button>
-                    </div>
+                    <>
+                        <Box sx={{ flexGrow: 1 }} />
+                        {/* <Box sx={{ flexGrow: 1 }} /> */}
+                        <SignIn/>
+                        <SignOut/>
+                    </>
                 }
             </Toolbar>
         </>

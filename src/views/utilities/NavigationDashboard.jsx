@@ -96,8 +96,6 @@ export default function NavigationDashboard(props) {
 
                                         }
                                     </Fragment>);
-
-                            // return item;
                             default:
                                 console.log('error:', item, i)
                             // return 'error'
