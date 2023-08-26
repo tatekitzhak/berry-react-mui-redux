@@ -14,7 +14,7 @@ export default function HeaderMenu() {
         bottom: false,
         right: false,
     });
-    const [menuItems, setMenuItems] = React.useState(['Home', 'About', 'Explore', 'Contact']);
+    const [menuItems, setMenuItems] = React.useState(['Products', 'Services', 'Explore', 'Contact']);
     const [breakpointsStatus, SetBreakpointsStatus] = React.useState(false);
     const theme = useTheme();
     const matchesXs = useMediaQuery(theme.breakpoints.down('md'));
@@ -56,7 +56,7 @@ export default function HeaderMenu() {
             </List>
             <Divider />
             <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                {['Sign In', 'sign up'].map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>

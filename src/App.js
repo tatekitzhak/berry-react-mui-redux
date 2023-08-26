@@ -138,9 +138,9 @@ function App(props) {
 
                 <Routes>
 
-                    <Route path="/" element={ <Page params={"Root"}/> } />
-                    <Route path={'home'} element={<Page params={"Home"}/>}></Route>
-                    <Route path="about" element={<Page params={"About"}/>}></Route>
+                    <Route path="/" element={ <Page params={"Home"}/> } />
+                    <Route path={'products'} element={<Page params={"Products"}/>}></Route>
+                    <Route path="services" element={<Page params={"Services"}/>}></Route>
 
                     <Route path="explore" element={<MainLayout args={"This is props"} location={location}/>}>
                         <Route index element={<NavigationDashboard location={location} />} />
@@ -157,7 +157,7 @@ function App(props) {
                         <Route path="util-color" element={<UtilsTablerIcons />} />
                         <Route path="util-shadow" element={<UtilsShadow />} />
                     </Route>
-                    <Route path="contact" element={<Page params={["Contact", " Have a question, comment or concern? Send a message to: ask@askmediadev.com "]}/>}></Route>
+                    <Route path="contact" element={<Page params={["Contact", " Have a question, comment or concern? Send a message to: info@askmediadev.com "]}/>}></Route>
                     
                 </Routes>
                 
