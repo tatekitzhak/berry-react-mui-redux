@@ -47,7 +47,7 @@ function Header({handleLeftDrawerToggle}) {
                 {
                     isUser ? 
                     <>
-                        <SearchSection /> {/* header search */}
+                        <SearchSection />
                         <Box sx={{ flexGrow: 1 }} />
                         <Box sx={{ flexGrow: 1 }} />
 
@@ -57,6 +57,7 @@ function Header({handleLeftDrawerToggle}) {
                     </> 
                     : 
                     <>
+                        <SearchSection />
                         <Box sx={{ flexGrow: 1 }} />
                         {/* <Box sx={{ flexGrow: 1 }} /> */}
                         <SignIn/>
