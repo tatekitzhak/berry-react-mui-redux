@@ -14,7 +14,7 @@ export default function HeaderMenu() {
         bottom: false,
         right: false,
     });
-    const [menuItems, setMenuItems] = React.useState(['Products', 'Services', 'Explore', 'Contact']);
+    const [menuItems, setMenuItems] = React.useState(['Products', 'Services', 'Explore', 'Pricing', 'Contact']);
     const [breakpointsStatus, SetBreakpointsStatus] = React.useState(false);
     const theme = useTheme();
     const matchesXs = useMediaQuery(theme.breakpoints.down('md'));

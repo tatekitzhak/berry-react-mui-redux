@@ -27,7 +27,7 @@ function Footer(params) {
     return (
         <MainCard title={params.params}>
             
-                <Layout/>
+            <Layout/>
 
             <Grid container direction="column"
                 alignItems="center"
