@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
+import LabelDemo from '@/LabelDemo';
 
 function Copyright(props) {
   return (
@@ -256,6 +257,7 @@ export default function LayoutPage(props) {
         <Copyright sx={{ mt: 5 }} />
       </Container>
       {/* End footer */}
+      <LabelDemo/>
     </ThemeProvider>
   );
 }

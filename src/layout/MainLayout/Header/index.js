@@ -101,7 +101,7 @@ const HeaderLayout = () => {
                     bgcolor: theme.palette.background.default,
                     transition: leftDrawerOpened ? theme.transitions.create('width') : 'none',
                     borderBottom: 1,
-                    borderColor: 'grey.500'
+                    borderColor: '#E0E0E0'
                 }}
                 
             >
