@@ -33,7 +33,10 @@ export function fetchSubtopics() {
       dispatch(getSubtopics())
        
       try {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+        // const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+        // const response = await axios.get('http://localhost:8000/api/category/?title=cat_name&id=12&title=subcat_name&id=34');
+        const response = await axios.get('http://localhost:8000/api/category');
+        
         
         dispatch(getSubtopicsSuccess(response.data))
       } catch (error) {

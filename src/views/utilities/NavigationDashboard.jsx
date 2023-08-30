@@ -67,7 +67,7 @@ export default function NavigationDashboard(props) {
                                 return (
                                     <Fragment key={i}>
                                         {
-                                            item.children.map((categories, index) => {
+                                            item?.children?.map((categories, index) => {
                                                 return (
                                                     <Grid xs={12} md={5} lg={4} key={index}>
                                                         <Item>
