@@ -2,13 +2,9 @@ import { useEffect, useState, Fragment } from 'react';
 import { Routes, Route, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMemoizedSubtopics } from '@/features/slices/subtopics/subtopicSlice';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Unstable_Grid2';
 
 import menuItems from '@/menu-items';
-import { Typography } from '@mui/material';
+import { Box, Grid, Paper, styled, Typography, ListItemText } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -16,6 +12,8 @@ const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     color: '#000',
+    // border: "none",
+    // boxShadow: "none"
 }));
 
 // https://mui.com/material-ui/react-grid2/
@@ -34,7 +32,7 @@ export default function NavigationDashboard(props) {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Typography> Services</Typography>
-            <Grid container spacing={2}>
+            <Grid container item spacing={2}>
                 {
                     //  menuItems().items.map((item, i) => {
                     //     switch (item.id) {
@@ -63,24 +61,25 @@ export default function NavigationDashboard(props) {
                     menuItems().items.map((item, i) => {
                         switch (item.id) {
                             case 'categories':
+                                
 
                                 return (
                                     <Fragment key={i}>
                                         {
                                             item?.children?.map((categories, index) => {
                                                 return (
-                                                    <Grid xs={12} md={5} lg={4} key={index}>
+                                                    <Grid item xs={12} md={5} lg={4} key={index}>
                                                         <Item>
                                                             <Box id="category-a" sx={{ fontSize: '12px', textTransform: 'uppercase' }}  >
                                                                 {categories.title}
                                                                
                                                             </Box>
-                                                            <Box component="ul" aria-labelledby="category-a" sx={{ pl: 2 }}>
+                                                            <Box component="ul" aria-labelledby="category-a" sx={{ pl: 2, textAlign: 'left' }}>
                                                             {
                                                                 
                                                                 categories.children?.map((subcategory, x) => {
                                                                     return(
-                                                                        <li key={x}><NavLink to={`${subcategory.url}`}> { subcategory.title }</NavLink></li>
+                                                                        <li key={x}><NavLink style={{textDecoration: 'none', color: '#7D7D7D'}} to={`${subcategory.url}`}> { subcategory.title }</NavLink></li>
                                                                     )
                                                                     
                                                                 })
@@ -103,6 +102,7 @@ export default function NavigationDashboard(props) {
                     })
 
                 }
+{/*                 
                 <Grid xs={12} md={5} lg={4}>
                     <Item>
                         <Box
@@ -150,7 +150,7 @@ export default function NavigationDashboard(props) {
                         </Box>
                     </Item>
                 </Grid>
-
+ */}
             </Grid>
         </Box>
     );

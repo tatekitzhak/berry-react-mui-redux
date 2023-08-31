@@ -64,16 +64,16 @@ const NavCollapse = ({ menu, level }) => {
                     mb: 0.5,
                     alignItems: 'flex-start',
                     backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
-                    py: level > 1 ? 1 : 1.25,
+                    py: level > 1 ? 1 : 0.2,
                     pl: `${level * 24}px`
                 }}
                 selected={selected === menu.id}
                 onClick={handleClick}
             >
-                <ListItemIcon sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 36 }}>{menuIcon}</ListItemIcon>
+                {/* <ListItemIcon sx={{ my: 'auto', minWidth: !menu.icon ? 18 : 36 }}>{menuIcon}</ListItemIcon> */}
                 <ListItemText
                     primary={
-                        <Typography variant={selected === menu.id ? 'h7' : 'body1'} color="inherit" sx={{ my: 'auto' }}>
+                        <Typography variant={selected === menu.id ? 'h7' : 'subtitle2'} color="inherit" sx={{ my: 'auto' }}>
                             {menu.title}
                         </Typography>
                     }

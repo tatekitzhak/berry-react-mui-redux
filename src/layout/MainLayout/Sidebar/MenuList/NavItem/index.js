@@ -75,11 +75,11 @@ const NavItem = ({ item, level }) => {
             disabled={item.disabled}
             sx={{
                 borderRadius: `${customization.borderRadius}px`,
-                mb: 0.5,
+                mb: 0,
                 alignItems: 'flex-start',
                 backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
-                py: level > 1 ? 1 : 1.25,
-                pl: `${level * 24}px`
+                py: level > 1 ? 1 : 0,
+                pl: `${level * 10}px`
             }}
             selected={customization.isOpen.findIndex((id) => id === item.id) > -1}
             onClick={() => itemHandler(item.id)}
@@ -87,7 +87,7 @@ const NavItem = ({ item, level }) => {
             <ListItemIcon sx={{ my: 'auto', minWidth: !item?.icon ? 18 : 36 }}>{itemIcon}</ListItemIcon>
             <ListItemText
                 primary={
-                    <Typography variant={customization.isOpen.findIndex((id) => id === item.id) > -1 ? 'h5' : 'body1'} color="inherit">
+                    <Typography variant={customization.isOpen.findIndex((id) => id === item.id) > -1 ? 'h7' : 'body2'} color="inherit">
                         {item.title}
                     </Typography>
                 }

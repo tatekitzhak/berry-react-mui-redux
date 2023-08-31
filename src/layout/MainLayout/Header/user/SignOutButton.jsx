@@ -96,7 +96,7 @@ const SignOut = () => {
                 }}
                 
                 // avatar={<Avatar>SignIn</Avatar>} 
-                label="Sign Out"
+                label="Sign Up"
                 variant="outlined"
                 ref={anchorRef}
                 aria-controls={open ? 'menu-list-grow' : undefined}
