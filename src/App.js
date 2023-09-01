@@ -29,19 +29,6 @@ const NavigationDashboard = Loadable(lazy(() => import('@/views/utilities/Naviga
 const UtilsTablerIcons = Loadable(lazy(() => import('@/views/utilities/TablerIcons')));
 const UtilsShadow = Loadable(lazy(() => import('@/views/utilities/Shadow')));
 
-function Page(params) {
-    return (
-        <>
-            <main style={{ padding: "1rem", marginTop: "68px", backgroundColor: "red" }}>
-                <h1>{params.params}: 404 Not Found</h1>
-                <p>There's nothing here!{console.log('No page found 2:', params)}</p>
-            </main>
-            <Footer params={"Footer Page"}/>
-        </>
-    )
-
-}
-
 function TopicsDashboardLayout(props) {
     return (
         <>
@@ -148,13 +135,13 @@ function App(props) {
                         <Route index element={<NavigationDashboard location={location} />} />
                         {
                             isAuthenticated && (
-                                <Route path=":topics/:subtopic"
+                                <Route path=":subcategory/:topic"
                                     element={<SubtopicLayout {...props} customization={customization} location={location} />}
                                 />
                             )
 
                         }
-                        <Route path=":topics/:subtopic/:article" element={<Article {...props} customization={customization} location={location} />} />
+                        <Route path=":subcategory/:topic/:article" element={<Article {...props} customization={customization} location={location} />} />
                         <Route path="util-typography" element={<UtilsTypography location={location} />} />
                         <Route path="util-color" element={<UtilsTablerIcons />} />
                         <Route path="util-shadow" element={<UtilsShadow />} />

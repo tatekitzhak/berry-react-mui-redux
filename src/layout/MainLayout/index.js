@@ -7,7 +7,6 @@ import { Outlet } from 'react-router-dom';
 
 import Grid from '@mui/system/Unstable_Grid';
 
-
 import { styled, useTheme } from '@mui/material/styles';
 import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material';
 import { Avatar, ButtonBase } from '@mui/material'

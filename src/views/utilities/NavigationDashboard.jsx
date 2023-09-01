@@ -59,6 +59,7 @@ export default function NavigationDashboard(props) {
                     // })
                     
                     menuItems().items.map((item, i) => {
+                        console.log('item:', item)
                         switch (item.id) {
                             case 'categories':
                                 
